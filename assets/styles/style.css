@@ -202,10 +202,22 @@ header div {
 #menu #menu-itens .item .addNewItem form .buttons {
    display: flex;
    justify-content: end;
+   align-items: center;
+}
+
+#menu #menu-itens .item .addNewItem form .buttons .btnDeleteItem {
+   background-color: transparent;
+   padding: 0;
+   margin-right: auto;
+}
+
+#menu #menu-itens .item .addNewItem form .buttons .btnDeleteItem svg {
+   fill: var(--color-red);
+   width: 2rem;
+   height: 2rem;
 }
 
 #menu #menu-itens .item .addNewItem form .buttons .btnsQtd {
-   background-color: transparent;
    border: 1px solid var(--color-orange);
    border-radius: 0.4rem;
    margin-right: 1rem;
@@ -226,11 +238,11 @@ header div {
    font-weight: 600;
 }
 
-.modalPed {
+#modalOrder {
    display: none;
 }
 
-.modalPed.show {
+#modalOrder.show {
    position: fixed;
    bottom: 0;
    left: 0;
@@ -239,13 +251,13 @@ header div {
    justify-content: center;
 }
 
-.modalPed > div {
+#modalOrder > div {
    background-color: var(--color-primary);
    padding: 1rem 1.25rem;
    width: 100%;
 }
 
-.modalPed .container {
+#modalOrder .container {
    background-color: var(--color-gray-light);
    display: flex;
    justify-content: space-between;
@@ -253,17 +265,17 @@ header div {
    padding: 0.5rem 1rem;
 }
 
-.modalPed .container button {
+#modalOrder .container button {
    font-weight: 600;
 }
 
-.modalPed .container p,
-.modalPed .container span {
+#modalOrder .container p,
+#modalOrder .container span {
    font-size: 0.8rem;
    font-weight: 400;
 }
 
-.modalPed .container .price {
+#modalOrder .container .price {
    font-family: 'Open Sans', sans-serif; 
    font-weight: 700;
 }
@@ -273,7 +285,7 @@ header div {
       width: 750px;
    }
 
-   .modalPed > div {
+   #modalOrder > div {
       width: 750px;
    }
 }

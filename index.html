@@ -3,7 +3,7 @@
 
 <head>
    <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,15 +46,18 @@
                         <img src="assets/images/burguer-a.png" alt="">
                      </div>
                   </div>
-                  <button id="btnAddItem" class="btnAddItem">Quero esse</button>
-                  
-                  <!-- create element in JS -->
-                  <div id="addNewItem" class="addNewItem">
+                  <button class="btnAddItem">Quero esse</button>
+
+                  <!-- <div class="addNewItem show">
                      <form>
                         <label for="burguer-a">Alguma observação?</label>
-                        <!-- <input type="text" id="burguer-a" placeholder="Ex: Tirar cheddar, etc..."> -->
                         <textarea id="burguer-a" cols="30" rows="3" placeholder="Ex: Tirar cheddar, etc..."></textarea>
                         <div class="buttons">
+                           <button class="btnDeleteItem">
+                              <svg>
+                                 <use xlink:href="assets/images/icons.svg#btnDeleteItem" />
+                              </svg>
+                           </button>
                            <div class="btnsQtd">
                               <button>-</button>
                               <span>1</span>
@@ -63,25 +66,68 @@
                            <button class="btnAdd">Adicionar</button>
                         </div>
                      </form>
-                  </div>
+                  </div> -->
+
+
+                  <!-- create element in JS -->
+                  <div class="addNewItem"></div>
                   <!-- ! create element in JS -->
 
                </div>
 
-               
+
+               <div class="item">
+                  <div class="item-container">
+                     <div class="item-description">
+                        <h4>Buguer B</h4>
+                        <p>Pão, hambúrguer 150g, bacon, batata rústica, cheddar e molho especial da casa.</p>
+                        <p class="price">R$ 25,90</p>
+                     </div>
+                     <div class="item-img">
+                        <img src="assets/images/burguer-b.png" alt="">
+                     </div>
+                  </div>
+                  <button class="btnAddItem">Quero esse</button>
+
+                  <!-- create element in JS -->
+                  <div class="addNewItem"></div>
+                  <!-- ! create element in JS -->
+
+
+               </div>
+
+               <div class="item">
+                  <div class="item-container">
+                     <div class="item-description">
+                        <h4>Buguer C</h4>
+                        <p>Pão, hambúrguer 150g, bacon, batata rústica, cheddar e molho especial da casa.</p>
+                        <p class="price">R$ 25,90</p>
+                     </div>
+                     <div class="item-img">
+                        <img src="assets/images/burguer-C.png" alt="">
+                     </div>
+                  </div>
+                  <button class="btnAddItem">Quero esse</button>
+
+                  <!-- create element in JS -->
+                  <div class="addNewItem"></div>
+                  <!-- ! create element in JS -->
+
+
+               </div>
 
             </div>
 
          </section>
 
-         <div id="modalPed" class="modalPed">
+         <div id="modalOrder">
             <div>
                <div class="container">
-                     <button>Ver pedido</button>
-                     <div>
-                        <p>Total sem entrega</p>
-                        <p class="price">R$ 25,90 <span>/ 1 item</span></p>
-                     </div>
+                  <button>Ver pedido</button>
+                  <div>
+                     <p>Total sem entrega</p>
+                     <p class="price">R$ 25,90 <span>/ 1 item</span></p>
+                  </div>
                </div>
             </div>
          </div>
