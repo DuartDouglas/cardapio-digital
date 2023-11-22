@@ -1,0 +1,280 @@
+/* FONTES 
+font-family: 'Montserrat', sans-serif; 400, 600, 700
+font-family: 'Open Sans', sans-serif; 400, 700
+*/
+
+* {
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   text-decoration: none;
+   box-sizing: border-box;
+   text-decoration: none;
+   font-family: 'Montserrat', sans-serif; 
+}
+
+:root {
+   --color-primary: #FFFFFF;
+   --color-secondary: #1B1B1B;
+   --color-tertiary: #333333;
+   --color-gray-medium: #757575;
+   --color-gray-light: #F6F6F6;
+   --color-orange: #FF4C00;
+   --color-green: #007A3B;
+   --color-red: #FF0000;
+}
+
+/* GENERAL CONFIG */
+button {
+   background-color: var(--color-orange);
+   color: var(--color-primary);
+   font-size: 1rem;
+   font-weight: 700;
+   padding: 0.5rem 1rem ;
+   border-radius: 0.4rem;
+   border: none;
+   cursor: pointer;
+}
+
+h1, h2, h3, h4, p, a, span, label {
+   color: #1B1B1B;
+   font-size: 1rem;
+}
+
+.app {
+   display: flex;
+   justify-content: center;
+   background-color: #eeeeee;
+}
+
+.main-container {
+   background-color: var(--color-primary);
+   padding-bottom: 10rem;
+}
+
+.about {
+   position: relative;
+}
+   
+.about img {
+   width: 100%;
+}
+
+.about #btnAbout {
+   position: absolute;
+   bottom: 1rem;
+   right: 1rem;
+   background-color: #ffffffc4;
+   color: var(--color-orange);
+}
+
+header {
+   padding: 1rem 1.25rem 2rem;
+}
+
+header h1 {
+   font-weight: 700;
+   font-size: 1.25rem;
+}
+
+header p {
+   color: var(--color-red);
+   font-weight: 600;
+   margin-block: 1rem 2rem;
+}
+
+header h3 {
+   font-size: 1rem;
+   font-weight: 400;
+}
+
+header h2 {
+   color: var(--color-tertiary);
+   font-size: 1rem;
+   font-weight: 400;
+}
+
+header div {
+   background-color: var(--color-gray-light);
+   border-radius: 0.4rem;
+   padding: 1rem;
+   text-align: center;
+}
+
+#menu {
+   padding-inline: 1.25rem;
+}
+
+#menu h2 {
+   font-size: 1.25rem;
+   font-weight: 400;
+}
+
+#menu #menu-itens {
+   margin-top: 1rem;
+   border-bottom: 2px solid #eeeeee;
+}
+
+#menu #menu-itens .item {
+   border-top: 2px solid #eeeeee ;
+   padding-block: 1rem;
+}
+
+#menu #menu-itens .item .item-container {
+   display: flex;
+   align-items: center;
+}
+
+#menu #menu-itens .item .item-container .item-description h4 {
+   font-size: 1rem;
+   line-height: 1.2rem;
+   font-weight: 700;
+}
+
+#menu #menu-itens .item .item-container .item-description p {
+   color: var(--color-tertiary);
+   font-size: 1rem;
+   line-height: 1.2rem;
+   font-weight: 400;
+}
+
+#menu #menu-itens .item .item-container .item-description .price {
+   font-family: 'Open Sans', sans-serif; 
+   font-weight: 700;
+   color: var(--color-secondary);
+   font-size: 1rem;
+   line-height: 1.2rem;
+   margin-top: 0.5rem;
+}
+
+#menu #menu-itens .item .item-container .item-img {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+#menu #menu-itens .item .item-container img {
+   width: 6rem;
+   border-radius: 0.4rem;
+}
+
+#menu #menu-itens .item .btnAddItem {
+   background-color: transparent;
+   padding: 0.5rem 0.5rem 0.5rem 0rem;
+   color: var(--color-secondary);
+   margin-top: 1rem;
+}
+
+#menu #menu-itens .item .addNewItem {
+   display: none;
+}
+
+#menu #menu-itens .item .addNewItem.show {
+   display: block;
+   margin: 0.2rem;
+   padding: 1rem 0.5rem;
+   background-color: var(--color-gray-light);
+}
+
+#menu #menu-itens .item .addNewItem form {
+   display: flex;
+   flex-direction: column;
+}
+
+#menu #menu-itens .item .addNewItem form label {
+   color: var(--color-gray-medium);
+   font-size: 0.9rem;
+   font-weight: 600;
+   margin-bottom: 0.5rem;
+}
+
+#menu #menu-itens .item .addNewItem form textarea {
+  padding: 1rem;
+  background-color: var(--color-gray-light);
+  font-size: 0.9rem;
+  border: 1px solid #d1d1d1;
+  border-radius: 0.4rem;
+  resize: none;
+  outline: none;
+  margin-bottom: 0.5rem;
+}
+
+#menu #menu-itens .item .addNewItem form .buttons {
+   display: flex;
+   justify-content: end;
+}
+
+#menu #menu-itens .item .addNewItem form .buttons .btnsQtd {
+   background-color: transparent;
+   border: 1px solid var(--color-orange);
+   border-radius: 0.4rem;
+   margin-right: 1rem;
+}
+
+#menu #menu-itens .item .addNewItem form .buttons .btnsQtd button {
+   background-color: transparent;
+   color: var(--color-orange);
+}
+
+#menu #menu-itens .item .addNewItem form .buttons .btnsQtd span {
+   font-family: 'Open Sans', sans-serif; 
+   font-weight: 700;
+   color: var(--color-orange);
+}
+
+#menu #menu-itens .item .addNewItem form .buttons .btnAdd {
+   font-weight: 600;
+}
+
+.modalPed {
+   display: none;
+}
+
+.modalPed.show {
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   display: flex;
+   justify-content: center;
+}
+
+.modalPed > div {
+   background-color: var(--color-primary);
+   padding: 1rem 1.25rem;
+   width: 100%;
+}
+
+.modalPed .container {
+   background-color: var(--color-gray-light);
+   display: flex;
+   justify-content: space-between;
+   border-radius: 0.4rem;
+   padding: 0.5rem 1rem;
+}
+
+.modalPed .container button {
+   font-weight: 600;
+}
+
+.modalPed .container p,
+.modalPed .container span {
+   font-size: 0.8rem;
+   font-weight: 400;
+}
+
+.modalPed .container .price {
+   font-family: 'Open Sans', sans-serif; 
+   font-weight: 700;
+}
+
+@media screen and (min-width: 750px) {
+   .main-container {
+      width: 750px;
+   }
+
+   .modalPed > div {
+      width: 750px;
+   }
+}
+

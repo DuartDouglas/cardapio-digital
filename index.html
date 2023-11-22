@@ -1,14 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;700&display=swap"
+      rel="stylesheet">
+
    <link rel="stylesheet" href="assets/styles/style.css">
    <title>Cardápio Digital</title>
 </head>
+
 <body>
-   
+   <div class="app">
+      <div class="main-container">
+         <section class="about">
+            <img src="assets/images/background.png" alt="background">
+            <button id="btnAbout">Sobre nós</button>
+         </section>
+
+         <header>
+            <h1>Food Drinks</h1>
+            <h3>Bar e restaurante</h3>
+            <p>Fechado - abre às 18:00</p>
+            <div>
+               <h2>Observações da empresa</h2>
+            </div>
+         </header>
+
+         <section id="menu">
+            <h2>Menu Food Drinks</h2>
+            <div id="menu-itens">
+               <div class="item">
+                  <div class="item-container">
+                     <div class="item-description">
+                        <h4>Buguer A</h4>
+                        <p>Pão, hambúrguer 150g, bacon, batata rústica, cheddar e molho especial da casa.</p>
+                        <p class="price">R$ 25,90</p>
+                     </div>
+                     <div class="item-img">
+                        <img src="assets/images/burguer-a.png" alt="">
+                     </div>
+                  </div>
+                  <button id="btnAddItem" class="btnAddItem">Quero esse</button>
+                  
+                  <!-- create element in JS -->
+                  <div id="addNewItem" class="addNewItem">
+                     <form>
+                        <label for="burguer-a">Alguma observação?</label>
+                        <!-- <input type="text" id="burguer-a" placeholder="Ex: Tirar cheddar, etc..."> -->
+                        <textarea id="burguer-a" cols="30" rows="3" placeholder="Ex: Tirar cheddar, etc..."></textarea>
+                        <div class="buttons">
+                           <div class="btnsQtd">
+                              <button>-</button>
+                              <span>1</span>
+                              <button>+</button>
+                           </div>
+                           <button class="btnAdd">Adicionar</button>
+                        </div>
+                     </form>
+                  </div>
+                  <!-- ! create element in JS -->
+
+               </div>
+
+               
+
+            </div>
+
+         </section>
+
+         <div id="modalPed" class="modalPed">
+            <div>
+               <div class="container">
+                     <button>Ver pedido</button>
+                     <div>
+                        <p>Total sem entrega</p>
+                        <p class="price">R$ 25,90 <span>/ 1 item</span></p>
+                     </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 
    <script src="assets/scripts/script.js"></script>
 </body>
+
 </html>
