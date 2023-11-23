@@ -1,6 +1,7 @@
 //============================================================
 // ITENS DO CARDÁPIO
 //============================================================
+const modalSummaryOrder = document.getElementById('modalSummaryOrder');
 
 const items = [
    { nome: "Burguer A", descricao: "Pão, hambúrguer 150g, bacon, batata rústica, cheddar e molho especial da casa.", preco: 25.90, observacoes: "", imagem: "burguer-a" },
@@ -10,6 +11,7 @@ const items = [
 ];
 
 let order = [];
+let total = 0;
 
 const createMenu = () => {
    const menuItemsContainer = document.getElementById('menuItemsContainer');
@@ -67,15 +69,19 @@ const createMenu = () => {
          const addNewItem = document.createElement('div');
          addNewItem.className = 'addNewItem';
 
-         const form = document.createElement('form');
+         //const form = document.createElement('form');
 
-         const label = document.createElement('label');
+         const label = document.createElement('p');
+         label.classList = "label";
          label.textContent = 'Alguma observação?';
 
          const textarea = document.createElement('textarea');
          textarea.setAttribute('cols', '30');
          textarea.setAttribute('rows', '3');
          textarea.setAttribute('placeholder', 'Ex: Tirar cheddar, etc...');
+         textarea.addEventListener('input', (event) => {
+            item.observacoes = event.target.value;
+         });
 
          const buttons = document.createElement('div');
          buttons.classList = 'buttons';
@@ -102,10 +108,13 @@ const createMenu = () => {
          const buttonAdd = document.createElement('button');
          buttonAdd.classList = 'btnAdd';
          buttonAdd.textContent = 'Adicionar';
+         buttonAdd.onclick = () => {
+            addToCart(item);
+         }
 
-         form.appendChild(label);
-         form.appendChild(textarea);
-         form.appendChild(buttons);
+         addNewItem.appendChild(label);
+         addNewItem.appendChild(textarea);
+         addNewItem.appendChild(buttons);
          buttons.appendChild(btnDeleteItem);
          btnDeleteItem.appendChild(svgBtnDeleteItem);
          svgBtnDeleteItem.appendChild(useBtnDeleteItem);
@@ -115,11 +124,13 @@ const createMenu = () => {
          div.appendChild(buttonPlus);
          buttons.appendChild(buttonAdd);
 
-         addNewItem.appendChild(form);
+         //addNewItem.appendChild(form);
          itemMenu.appendChild(addNewItem);
 
          // precisa conferir se existe algum item na sacola para ser exibido o modal
-         modalOrder.classList.add('show');
+         modalSummaryOrder.classList.add('show');
+         let qtdOrderSummary = document.getElementById("qtdOrderSummary");
+         qtdOrderSummary.innerHTML = "Nenhum item no carrinho";
 
          // Trabalhando no formulário
          /*  btnDeleteItem.addEventListener('click', () => {
@@ -132,6 +143,41 @@ const createMenu = () => {
    });
 }
 
+function addToCart(item) {
+   order.push(item);
+   total += item.preco;
+   console.log(total);
+   updateOrderSummary();
+}
+
+function updateOrderSummary() {
+   //let orderSummary = document.getElementById("orderSummary");
+   let qtdOrderSummary = document.getElementById("qtdOrderSummary");
+   let totalPrice = document.getElementById('totalPrice');
+   if (order.length < 1) {
+      qtdOrderSummary.innerHTML = "Nenhum item no carrinho";
+   } else if (order.length < 2) {
+      qtdOrderSummary.innerHTML = "Total sem entrega";
+      totalPrice.innerHTML = "R$ " + total.toFixed(2) + " <span>/ " + order.length + " item</span>";
+   } else {
+      totalPrice.innerHTML = "R$ " + total.toFixed(2) + " <span>/ " + order.length + " itens</span>";
+   }
+
+   /* if (order.length < 2) {
+      orderSummary.innerHTML = "R$ " + total.toFixed(2) + " <span>/ " + order.length +" item</span>";   
+   } else {
+      orderSummary.innerHTML = "R$ " + total.toFixed(2) + " <span>/ " + order.length +" itens</span>";   
+   } */
+}
+
+/* function checkout() {
+   // Aqui você pode adicionar lógica para finalizar a compra, como enviar o pedido para um servidor, etc.
+   alert("Compra realizada com sucesso!");
+   order = [];
+   total = 0;
+   updateOrderSummary();
+} */
+
 window.onload = createMenu;
 
 
@@ -140,7 +186,7 @@ window.onload = createMenu;
 // CÓDIGO ANTIGO =============================================
 //============================================================
 /* const btnAddItem = document.querySelectorAll('.btnAddItem');
-const modalOrder = document.getElementById('modalOrder');
+const modalSummaryOrder = document.getElementById('modalSummaryOrder');
 
 
 for (let i = 0; i < btnAddItem.length; i++) {
@@ -200,7 +246,7 @@ for (let i = 0; i < btnAddItem.length; i++) {
       addNewItem.appendChild(form);
 
       // precisa conferir se existe algum item na sacola para ser exibido o modal
-      modalOrder.classList.add('show');
+      modalSummaryOrder.classList.add('show');
 
       // Trabalhando no formulário
       btnDeleteItem.addEventListener('click', () => {

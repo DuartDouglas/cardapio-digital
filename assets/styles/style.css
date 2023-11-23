@@ -36,7 +36,7 @@ button {
    cursor: pointer;
 }
 
-h1, h2, h3, h4, p, a, span, label {
+h1, h2, h3, h4, p, a, span {
    color: #1B1B1B;
    font-size: 1rem;
 }
@@ -177,25 +177,26 @@ header div {
 } */
 
 #menu #menuItemsContainer .item .addNewItem {
-   display: block;
+   display: flex;
+   flex-direction: column;
    margin: 0.2rem;
    padding: 1rem 0.5rem;
    background-color: var(--color-gray-light);
 }
 
-#menu #menuItemsContainer .item .addNewItem form {
+#menu #menuItemsContainer .item .addNewItem  {
    display: flex;
    flex-direction: column;
 }
 
-#menu #menuItemsContainer .item .addNewItem form label {
+#menu #menuItemsContainer .item .addNewItem .label {
    color: var(--color-gray-medium);
    font-size: 0.9rem;
    font-weight: 600;
    margin-bottom: 0.5rem;
 }
 
-#menu #menuItemsContainer .item .addNewItem form textarea {
+#menu #menuItemsContainer .item .addNewItem  textarea {
   padding: 1rem;
   background-color: var(--color-gray-light);
   font-size: 0.9rem;
@@ -206,50 +207,50 @@ header div {
   margin-bottom: 0.5rem;
 }
 
-#menu #menuItemsContainer .item .addNewItem form .buttons {
+#menu #menuItemsContainer .item .addNewItem .buttons {
    display: flex;
    justify-content: end;
    align-items: center;
 }
 
-#menu #menuItemsContainer .item .addNewItem form .buttons .btnDeleteItem {
+#menu #menuItemsContainer .item .addNewItem  .buttons .btnDeleteItem {
    background-color: transparent;
    padding: 0;
    margin-right: auto;
 }
 
-#menu #menuItemsContainer .item .addNewItem form .buttons .btnDeleteItem svg {
+#menu #menuItemsContainer .item .addNewItem  .buttons .btnDeleteItem svg {
    fill: var(--color-red);
    width: 2rem;
    height: 2rem;
 }
 
-#menu #menuItemsContainer .item .addNewItem form .buttons .btnsQtd {
+#menu #menuItemsContainer .item .addNewItem  .buttons .btnsQtd {
    border: 1px solid var(--color-orange);
    border-radius: 0.4rem;
    margin-right: 1rem;
 }
 
-#menu #menuItemsContainer .item .addNewItem form .buttons .btnsQtd button {
+#menu #menuItemsContainer .item .addNewItem  .buttons .btnsQtd button {
    background-color: transparent;
    color: var(--color-orange);
 }
 
-#menu #menuItemsContainer .item .addNewItem form .buttons .btnsQtd span {
+#menu #menuItemsContainer .item .addNewItem  .buttons .btnsQtd span {
    font-family: 'Open Sans', sans-serif; 
    font-weight: 700;
    color: var(--color-orange);
 }
 
-#menu #menuItemsContainer .item .addNewItem form .buttons .btnAdd {
+#menu #menuItemsContainer .item .addNewItem  .buttons .btnAdd {
    font-weight: 600;
 }
 
-#modalOrder {
+#modalSummaryOrder {
    display: none;
 }
 
-#modalOrder.show {
+#modalSummaryOrder.show {
    position: fixed;
    bottom: 0;
    left: 0;
@@ -258,13 +259,13 @@ header div {
    justify-content: center;
 }
 
-#modalOrder > div {
+#modalSummaryOrder > div {
    background-color: var(--color-primary);
    padding: 1rem 1.25rem;
    width: 100%;
 }
 
-#modalOrder .container {
+#modalSummaryOrder .container {
    background-color: var(--color-gray-light);
    display: flex;
    justify-content: space-between;
@@ -272,17 +273,17 @@ header div {
    padding: 0.5rem 1rem;
 }
 
-#modalOrder .container button {
+#modalSummaryOrder .container button {
    font-weight: 600;
 }
 
-#modalOrder .container p,
-#modalOrder .container span {
+#modalSummaryOrder .container p,
+#modalSummaryOrder .container span {
    font-size: 0.8rem;
    font-weight: 400;
 }
 
-#modalOrder .container .price {
+#modalSummaryOrder .container .price {
    font-family: 'Open Sans', sans-serif; 
    font-weight: 700;
 }
@@ -292,7 +293,7 @@ header div {
       width: 750px;
    }
 
-   #modalOrder > div {
+   #modalSummaryOrder > div {
       width: 750px;
    }
 }
