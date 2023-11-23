@@ -110,35 +110,35 @@ header div {
    font-weight: 400;
 }
 
-#menu #menu-itens {
+#menu #menuItemsContainer {
    margin-top: 1rem;
    border-bottom: 2px solid #eeeeee;
 }
 
-#menu #menu-itens .item {
+#menu #menuItemsContainer .item {
    border-top: 2px solid #eeeeee ;
    padding-block: 1rem;
 }
 
-#menu #menu-itens .item .item-container {
+#menu #menuItemsContainer .item .item-container {
    display: flex;
    align-items: center;
 }
 
-#menu #menu-itens .item .item-container .item-description h4 {
+#menu #menuItemsContainer .item .item-container .item-description h4 {
    font-size: 1rem;
    line-height: 1.2rem;
    font-weight: 700;
 }
 
-#menu #menu-itens .item .item-container .item-description p {
+#menu #menuItemsContainer .item .item-container .item-description p {
    color: var(--color-tertiary);
    font-size: 1rem;
    line-height: 1.2rem;
    font-weight: 400;
 }
 
-#menu #menu-itens .item .item-container .item-description .price {
+#menu #menuItemsContainer .item .item-container .item-description .price {
    font-family: 'Open Sans', sans-serif; 
    font-weight: 700;
    color: var(--color-secondary);
@@ -147,48 +147,55 @@ header div {
    margin-top: 0.5rem;
 }
 
-#menu #menu-itens .item .item-container .item-img {
+#menu #menuItemsContainer .item .item-container .item-img {
    display: flex;
    align-items: center;
    justify-content: center;
 }
 
-#menu #menu-itens .item .item-container img {
+#menu #menuItemsContainer .item .item-container img {
    width: 6rem;
    border-radius: 0.4rem;
 }
 
-#menu #menu-itens .item .btnAddItem {
+#menu #menuItemsContainer .item .btnAddItem {
    background-color: transparent;
    padding: 0.5rem 0.5rem 0.5rem 0rem;
    color: var(--color-secondary);
    margin-top: 1rem;
 }
 
-#menu #menu-itens .item .addNewItem {
+/* #menu #menuItemsContainer .item .addNewItem {
    display: none;
-}
+} */
 
-#menu #menu-itens .item .addNewItem.show {
+/* #menu #menuItemsContainer .item .addNewItem.show {
+   display: block;
+   margin: 0.2rem;
+   padding: 1rem 0.5rem;
+   background-color: var(--color-gray-light);
+} */
+
+#menu #menuItemsContainer .item .addNewItem {
    display: block;
    margin: 0.2rem;
    padding: 1rem 0.5rem;
    background-color: var(--color-gray-light);
 }
 
-#menu #menu-itens .item .addNewItem form {
+#menu #menuItemsContainer .item .addNewItem form {
    display: flex;
    flex-direction: column;
 }
 
-#menu #menu-itens .item .addNewItem form label {
+#menu #menuItemsContainer .item .addNewItem form label {
    color: var(--color-gray-medium);
    font-size: 0.9rem;
    font-weight: 600;
    margin-bottom: 0.5rem;
 }
 
-#menu #menu-itens .item .addNewItem form textarea {
+#menu #menuItemsContainer .item .addNewItem form textarea {
   padding: 1rem;
   background-color: var(--color-gray-light);
   font-size: 0.9rem;
@@ -199,42 +206,42 @@ header div {
   margin-bottom: 0.5rem;
 }
 
-#menu #menu-itens .item .addNewItem form .buttons {
+#menu #menuItemsContainer .item .addNewItem form .buttons {
    display: flex;
    justify-content: end;
    align-items: center;
 }
 
-#menu #menu-itens .item .addNewItem form .buttons .btnDeleteItem {
+#menu #menuItemsContainer .item .addNewItem form .buttons .btnDeleteItem {
    background-color: transparent;
    padding: 0;
    margin-right: auto;
 }
 
-#menu #menu-itens .item .addNewItem form .buttons .btnDeleteItem svg {
+#menu #menuItemsContainer .item .addNewItem form .buttons .btnDeleteItem svg {
    fill: var(--color-red);
    width: 2rem;
    height: 2rem;
 }
 
-#menu #menu-itens .item .addNewItem form .buttons .btnsQtd {
+#menu #menuItemsContainer .item .addNewItem form .buttons .btnsQtd {
    border: 1px solid var(--color-orange);
    border-radius: 0.4rem;
    margin-right: 1rem;
 }
 
-#menu #menu-itens .item .addNewItem form .buttons .btnsQtd button {
+#menu #menuItemsContainer .item .addNewItem form .buttons .btnsQtd button {
    background-color: transparent;
    color: var(--color-orange);
 }
 
-#menu #menu-itens .item .addNewItem form .buttons .btnsQtd span {
+#menu #menuItemsContainer .item .addNewItem form .buttons .btnsQtd span {
    font-family: 'Open Sans', sans-serif; 
    font-weight: 700;
    color: var(--color-orange);
 }
 
-#menu #menu-itens .item .addNewItem form .buttons .btnAdd {
+#menu #menuItemsContainer .item .addNewItem form .buttons .btnAdd {
    font-weight: 600;
 }
 
