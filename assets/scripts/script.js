@@ -94,10 +94,9 @@ const createMenu = () => {
          const useBtnDeleteItem = document.createElementNS("http://www.w3.org/2000/svg", "use");
          useBtnDeleteItem.setAttributeNS("http://www.w3.org/1999/xlink", "href", "assets/images/icons.svg#btnDeleteItem"); */
 
-         const div = document.createElement('div');
-         div.classList = 'btnsQtd';
 
          const buttonMinus = document.createElement('button');
+         buttonMinus.classList = 'btnMinus';
          buttonMinus.innerHTML = '<svg> <use xlink:href="assets/images/icons.svg#minus"/></svg>';
          buttonMinus.addEventListener('click', () => {
             removeFromCart(item);
@@ -131,12 +130,8 @@ const createMenu = () => {
          addNewItem.appendChild(textarea);
          addNewItem.appendChild(buttons);
          buttons.appendChild(span);
-
-         buttons.appendChild(div);
-         div.appendChild(buttonMinus);
-
+         buttons.appendChild(buttonMinus);
          buttons.appendChild(buttonAdd);
-
          itemMenu.appendChild(addNewItem);
 
          // se não existe nenhum item na sacola exibido no modal a msg
@@ -164,7 +159,7 @@ function removeFromCart(item) {
       order.splice(index, 1);
       total -= item.preco;
       updateOrderSummary();
-      //checkout(); // Atualiza o resumo do pedido ao remover um item
+      //viewOrder(); // Atualiza o resumo do pedido ao remover um item
    }
 }
 
@@ -182,12 +177,27 @@ function updateOrderSummary() {
    }
 }
 
-function checkout() {
-   const checkoutContainer = document.getElementById('checkoutContainer');
-   checkoutContainer.innerHTML = ""; // Limpa o conteúdo anterior
+
+function viewOrder() {
+   const viewOrderContainer = document.getElementById('viewOrderContainer');
+   viewOrderContainer.classList.add('show');
+}
+const btnViewOrder = document.getElementById('btnViewOrder')
+btnViewOrder.addEventListener('click', viewOrder);
+
+const closeSummaryOrder = document.getElementById('closeSummaryOrder')
+closeSummaryOrder.addEventListener('click', ()=> {
+   viewOrderContainer.classList.remove('show');
+});
+
+
+// FUNÇÃO DE ESTUDOS
+/* function viewOrder() {
+   const viewOrderContainer = document.getElementById('viewOrderContainer');
+   viewOrderContainer.innerHTML = ""; // Limpa o conteúdo anterior
 
    if (order.length === 0) {
-      checkoutContainer.innerHTML = "Nenhum item no carrinho";
+      viewOrderContainer.innerHTML = "Nenhum item no carrinho";
    } else {
       const checkoutTitle = document.createElement('h2');
       checkoutTitle.textContent = "Resumo do Pedido";
@@ -225,15 +235,14 @@ function checkout() {
       const totalContainer = document.createElement('div');
       totalContainer.textContent = `Total: R$ ${total.toFixed(2)}`;
 
-      checkoutContainer.appendChild(checkoutTitle);
-      checkoutContainer.appendChild(itemList);
-      checkoutContainer.appendChild(totalContainer);
+      viewOrderContainer.appendChild(checkoutTitle);
+      viewOrderContainer.appendChild(itemList);
+      viewOrderContainer.appendChild(totalContainer);
    }
 
    modalSummaryOrder.classList.add('show');
 }
-
-const seeOrder = document.getElementById('seeOrder')
-seeOrder.addEventListener('click', checkout);
+const btnViewOrder = document.getElementById('btnViewOrder')
+btnViewOrder.addEventListener('click', viewOrder); */
 
 window.onload = createMenu;

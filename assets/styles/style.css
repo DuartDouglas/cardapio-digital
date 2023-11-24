@@ -165,17 +165,6 @@ header div {
    margin-top: 1rem;
 }
 
-/* #menu #menuItemsContainer .item .addNewItem {
-   display: none;
-} */
-
-/* #menu #menuItemsContainer .item .addNewItem.show {
-   display: block;
-   margin: 0.2rem;
-   padding: 1rem 0.5rem;
-   background-color: var(--color-gray-light);
-} */
-
 #menu #menuItemsContainer .item .addNewItem {
    display: flex;
    flex-direction: column;
@@ -213,46 +202,24 @@ header div {
    align-items: center;
 }
 
-/* #menu #menuItemsContainer .item .addNewItem  .buttons .btnDeleteItem {
-   background-color: transparent;
-   padding: 0;
-   margin-right: auto;
-} */
-
-/* #menu #menuItemsContainer .item .addNewItem  .buttons .btnDeleteItem svg {
-   fill: var(--color-red);
-   width: 2rem;
-   height: 2rem;
-} */
-
 #menu #menuItemsContainer .item .addNewItem  .buttons span {
    margin-right: auto;
 }
 
-#menu #menuItemsContainer .item .addNewItem  .buttons .btnsQtd {
+#menu #menuItemsContainer .item .addNewItem  .buttons .btnMinus {
+   background-color: transparent;
    border: 1px solid var(--color-orange);
    border-radius: 0.4rem;
    margin-right: 1rem;
-}
-
-#menu #menuItemsContainer .item .addNewItem  .buttons .btnsQtd button {
-   background-color: transparent;
-   color: var(--color-orange);
    display: flex;
    align-items: center;
 }
 
-#menu #menuItemsContainer .item .addNewItem  .buttons .btnsQtd button svg {
+#menu #menuItemsContainer .item .addNewItem  .buttons .btnMinus svg {
    fill: var(--color-orange);
    width: 1rem;
    height: 1rem;
 }
-
-/* #menu #menuItemsContainer .item .addNewItem  .buttons .btnsQtd span {
-   font-family: 'Open Sans', sans-serif; 
-   font-weight: 700;
-   color: var(--color-orange);
-} */
 
 #menu #menuItemsContainer .item .addNewItem  .buttons .btnAdd {
    font-weight: 600;
@@ -308,6 +275,156 @@ header div {
 #modalSummaryOrder .container .price {
    font-family: 'Open Sans', sans-serif; 
    font-weight: 700;
+}
+
+#viewOrderContainer {
+   display: none;
+}
+
+#viewOrderContainer.show {
+   display: block;
+   background-color: transparent;
+}
+
+#viewOrderContainer .container {
+   position: fixed;
+   top: 5rem;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background-color: var(--color-primary);
+   border-radius: 2rem 2rem 0rem 0rem;
+   overflow-y: auto;
+   padding-bottom: 3rem;
+}
+
+#viewOrderContainer .headerViewOrder {
+   background-color: #eeeeee;
+   border-radius: 2rem 2rem 0rem 0rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 0.8rem 1.25rem;
+   position: fixed;
+   left: 0;
+   right: 0;
+}
+
+#viewOrderContainer .headerViewOrder button:nth-child(1) {
+   background-color: transparent;
+   margin-right: auto;
+}
+
+#viewOrderContainer .headerViewOrder button svg {
+   fill: var(--color-orange);
+   width: 1rem;
+   height: 1rem;
+}
+
+#viewOrderContainer .headerViewOrder h2 {
+   color: var(--color-gray-medium);
+   text-align: center;
+}
+
+#viewOrderContainer .headerViewOrder #btnEditItems {
+   background-color: transparent;
+   color: var(--color-orange);
+   font-size: 0.9rem;
+   font-weight: 400;
+   margin-left: auto;
+}
+
+#viewOrderContainer .summaryOrder {
+   margin-inline: 1.25rem;
+   border-bottom: 2px solid #eeeeee ;
+   margin-top: 7rem;
+}
+
+#viewOrderContainer .summaryOrder > h2 {
+   margin-block: 1rem;
+   font-size: 1.25rem;
+}
+
+#viewOrderContainer .summaryOrder .item {
+   border-top: 2px solid #eeeeee ;
+   padding-block: 1rem;
+}
+
+#viewOrderContainer .summaryOrder .item-container {
+   display: flex;
+}
+
+#viewOrderContainer .summaryOrder .item .item-img {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-right: 0.5rem;
+}
+
+#viewOrderContainer .summaryOrder .item .item-img img {
+   width: 5rem;
+   border-radius: 0.4rem;
+}
+
+#viewOrderContainer .summaryOrder .item .item-description .header {
+   display: flex;
+   align-items: center;
+}
+
+#viewOrderContainer .summaryOrder .item .item-description .header h4 {
+   font-size: 0.9rem;
+}
+
+#viewOrderContainer .summaryOrder .item .item-description .header p {
+   font-size: 0.9rem;
+   margin-left: auto;
+   font-family: 'Open Sans', sans-serif; 
+   font-weight: 700;
+}
+
+#viewOrderContainer .summaryOrder .item .item-description > p {
+   font-size: 0.9rem;
+   margin-top: 0.5rem;
+}
+
+#viewOrderContainer .summaryOrder .item .summaryItem {
+   color: var(--color-orange);
+   text-align: end;
+   font-family: 'Open Sans', sans-serif; 
+}
+
+#viewOrderContainer .deliveryDataContainer {
+   padding-inline: 1.25rem;
+   margin-top: 1.25rem;
+}
+
+#viewOrderContainer .totalPriceContainer {
+   padding-inline: 1.25rem;
+   margin-block: 1.3rem;
+}
+
+#viewOrderContainer .totalPriceContainer ul li {
+   display: flex;
+   justify-content: space-between;
+   padding-block: 0.3rem;
+}
+
+#viewOrderContainer .totalPriceContainer ul li span {
+   font-weight: 700;
+}
+
+#viewOrderContainer .totalPriceContainer ul li span:nth-child(2) {
+   font-family: 'Open Sans', sans-serif; 
+}
+
+#viewOrderContainer .container .submitOrderContainer {
+   display: flex;
+   justify-content: end;
+   padding-inline: 1.25rem;
+}
+
+#viewOrderContainer .totalPriceContainer ul li:nth-child(2) span:nth-child(2) {
+   color: var(--color-green);
 }
 
 @media screen and (min-width: 750px) {
