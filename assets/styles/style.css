@@ -352,6 +352,7 @@ header div {
 
 #viewOrderContainer .summaryOrder .item-container {
    display: flex;
+   align-items: flex-start;
 }
 
 #viewOrderContainer .summaryOrder .item .item-img {
@@ -387,9 +388,25 @@ header div {
    margin-top: 0.5rem;
 }
 
+#viewOrderContainer .summaryOrder .item .summaryItemContainer {
+   display: flex;
+   flex-direction: column;
+   align-items: end;
+   margin-top: 0.8rem;
+}
+
+#viewOrderContainer .summaryOrder .item .summaryItemContainer .itemObservations {
+   font-size: 0.9rem;
+   font-weight: 700;
+}
+#viewOrderContainer .summaryOrder .item .summaryItemContainer .itemObservations > span {
+   font-size: 0.9rem;
+   font-weight: 400;
+   font-style: italic;
+}
+
 #viewOrderContainer .summaryOrder .item .summaryItem {
    color: var(--color-orange);
-   text-align: end;
    font-family: 'Open Sans', sans-serif; 
 }
 

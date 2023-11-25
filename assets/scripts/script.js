@@ -2,6 +2,9 @@
 // ITENS DO CARDÁPIO
 //============================================================
 const modalSummaryOrder = document.getElementById('modalSummaryOrder');
+const btnViewOrder = document.getElementById('btnViewOrder');
+const deliveryPriceSpan = document.getElementById('deliveryPriceSpan');
+
 
 const items = [
    { nome: "Burguer A", descricao: "Pão, hambúrguer 150g, bacon, batata rústica, cheddar e molho especial da casa.", preco: 25.90, observacoes: "", imagem: "burguer-a" },
@@ -9,6 +12,8 @@ const items = [
    { nome: "Burguer C", descricao: "Pão, hambúrguer 150g, bacon, batata rústica, cheddar e molho especial da casa.", preco: 31.90, observacoes: "", imagem: "burguer-c" },
    { nome: "Burguer D", descricao: "Pão, hambúrguer 150g, bacon, batata rústica, cheddar e molho especial da casa.", preco: 28.90, observacoes: "", imagem: "burguer-d" }
 ];
+
+const deliveryPrice = 40.00;
 
 let order = [];
 let total = 0;
@@ -66,6 +71,11 @@ const createMenu = () => {
       //============================================================
       btnAddItem.addEventListener('click', () => {
          btnAddItem.style.display = 'none';
+         
+         if (order.length < 1) {
+            btnViewOrder.style.display = "none";
+         }
+
          const addNewItem = document.createElement('div');
          addNewItem.className = 'addNewItem';
 
@@ -107,10 +117,15 @@ const createMenu = () => {
             } else {
                buttonMinus.style.display = "flex";
             }
+
+            if (order.length < 1) {
+               modalSummaryOrder.classList.remove('show');
+            }
+
          });
 
          buttonMinus.style.display = "none";
-         
+
          const buttonAdd = document.createElement('button');
          buttonAdd.classList = 'btnAdd';
 
@@ -124,6 +139,9 @@ const createMenu = () => {
             } else {
                buttonMinus.style.display = "flex";
             }
+
+            btnViewOrder.style.display = "flex";
+            modalSummaryOrder.classList.add('show');
          }
 
          addNewItem.appendChild(label);
@@ -177,72 +195,115 @@ function updateOrderSummary() {
    }
 }
 
-
 function viewOrder() {
    const viewOrderContainer = document.getElementById('viewOrderContainer');
-   viewOrderContainer.classList.add('show');
+   if (order.length >= 1) {
+      viewOrderContainer.classList.add('show');
+   }
+
+   const summaryOrder = document.getElementById('summaryOrder');
+
+   // Limpa o conteúdo anterior do summaryOrder
+   summaryOrder.innerHTML = "";
+
+   // Cria um conjunto para manter o controle dos itens já exibidos
+   const displayedItems = new Set();
+
+   // Itera sobre os itens no carrinho
+   order.forEach(item => {
+      const itemName = item.nome;
+
+      // Verifica se o item já foi exibido, se sim, continua para o próximo item
+      if (displayedItems.has(itemName)) {
+         return;
+      }
+
+      const itemsWithSameName = order.filter(i => i.nome === itemName);
+      const quantity = itemsWithSameName.length;
+      const description = itemsWithSameName[0].descricao;
+      const observations = itemsWithSameName[0].observacoes || "Sem observações";
+      const unitPrice = itemsWithSameName[0].preco;
+      const image = itemsWithSameName[0].imagem;
+
+      const totalItem = quantity * unitPrice;
+
+      // =============================
+      // CRIA OS ELEMENTO EM ITEMS
+      // =============================
+      const divItem = document.createElement('div');
+      divItem.classList = 'item';
+      const itemContainer = document.createElement('div');
+      itemContainer.classList = 'item-container';
+      const itemImg = document.createElement('div');
+      itemImg.classList = 'item-img';
+      const img = document.createElement('img');
+      img.src = `assets/images/${image}.png`;
+      img.alt = itemName;
+      const itemDescription = document.createElement('div');
+      itemDescription.classList = 'item-description';
+      const header = document.createElement('div');
+      header.classList = 'header';
+      const burguerTitle = document.createElement('h4');
+      burguerTitle.textContent = itemName;
+      const burguerPrice = document.createElement('p');
+      burguerPrice.classList = 'price';
+      burguerPrice.textContent = `R$ ${unitPrice.toFixed(2)}`;
+      const descriptionBurguer = document.createElement('p');
+      descriptionBurguer.textContent = description;
+      const summaryItemContainer = document.createElement('div');
+      summaryItemContainer.classList = 'summaryItemContainer';
+      const itemObservationsP = document.createElement('p');
+      itemObservationsP.classList = 'itemObservations';
+      itemObservationsP.innerHTML = `Observações: <span>${observations}</span>`;
+      const summaryItem = document.createElement('p');
+      summaryItem.classList = 'summaryItem';
+      summaryItem.textContent = `${quantity} und/ Total R$ ${totalItem.toFixed(2)}`;
+
+
+      divItem.appendChild(itemContainer);
+      itemContainer.appendChild(itemImg);
+      itemImg.appendChild(img);
+      itemContainer.appendChild(itemDescription);
+      itemDescription.appendChild(header);
+      header.appendChild(burguerTitle);
+      header.appendChild(burguerPrice);
+      itemDescription.appendChild(descriptionBurguer);
+      divItem.appendChild(summaryItemContainer);
+      summaryItemContainer.appendChild(itemObservationsP);
+      summaryItemContainer.appendChild(summaryItem);
+
+      summaryOrder.appendChild(divItem);
+      // =============================
+      // !!! CRIA OS ELEMENTO EM ITEMS
+      // =============================
+
+      // Adiciona o nome do item ao conjunto de itens exibidos
+      displayedItems.add(itemName);
+
+      /* VALORES TOTAIS */
+      const subTotalOrder = document.getElementById('subTotalOrder');
+      const totalPriceOrder = document.getElementById('totalPriceOrder');
+      subTotalOrder.textContent = `R$ ${total.toFixed(2)}` ;
+      
+      deliveryPriceSpan.textContent = `R$ ${deliveryPrice.toFixed(2)}`;
+
+      let calcTotal = Number(deliveryPrice.toFixed(2)) + Number(total.toFixed(2));
+      //totalPriceOrder.textContent = `R$ ${total.toFixed(2)}` ;
+      totalPriceOrder.textContent = `R$ ${calcTotal.toFixed(2)}` ;
+      
+   });
 }
-const btnViewOrder = document.getElementById('btnViewOrder')
+
 btnViewOrder.addEventListener('click', viewOrder);
 
-const closeSummaryOrder = document.getElementById('closeSummaryOrder')
-closeSummaryOrder.addEventListener('click', ()=> {
+
+// FECHA RESUMO DO PEDIDO 
+document.getElementById('closeSummaryOrder').addEventListener('click', () => {
    viewOrderContainer.classList.remove('show');
 });
 
-
-// FUNÇÃO DE ESTUDOS
-/* function viewOrder() {
-   const viewOrderContainer = document.getElementById('viewOrderContainer');
-   viewOrderContainer.innerHTML = ""; // Limpa o conteúdo anterior
-
-   if (order.length === 0) {
-      viewOrderContainer.innerHTML = "Nenhum item no carrinho";
-   } else {
-      const checkoutTitle = document.createElement('h2');
-      checkoutTitle.textContent = "Resumo do Pedido";
-
-      const itemList = document.createElement('ul');
-
-      // Cria um objeto para armazenar a contagem de cada item e suas observações
-      const itemDetails = {};
-
-      // Agrupa os itens e suas observações no carrinho
-      order.forEach(item => {
-         const itemName = item.nome;
-         const itemObservations = item.observacoes || "Sem observações";
-
-         if (!itemDetails[itemName]) {
-            itemDetails[itemName] = {
-               quantity: 0,
-               observations: itemObservations,
-            };
-         }
-
-         itemDetails[itemName].quantity++;
-      });
-
-      // Adiciona cada item, sua quantidade e observações ao resumo
-      for (const itemName in itemDetails) {
-         const { quantity, observations } = itemDetails[itemName];
-
-         const listItem = document.createElement('li');
-         listItem.innerHTML = `<strong>${quantity}x ${itemName} - </strong>Observações: ${observations}`;
-
-         itemList.appendChild(listItem);
-      }
-
-      const totalContainer = document.createElement('div');
-      totalContainer.textContent = `Total: R$ ${total.toFixed(2)}`;
-
-      viewOrderContainer.appendChild(checkoutTitle);
-      viewOrderContainer.appendChild(itemList);
-      viewOrderContainer.appendChild(totalContainer);
-   }
-
-   modalSummaryOrder.classList.add('show');
-}
-const btnViewOrder = document.getElementById('btnViewOrder')
-btnViewOrder.addEventListener('click', viewOrder); */
+document.getElementById('btnEditItems').addEventListener('click', () => {
+   viewOrderContainer.classList.remove('show');
+});
 
 window.onload = createMenu;

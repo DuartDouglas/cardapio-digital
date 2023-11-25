@@ -86,9 +86,8 @@
             </div>
          </div>
 
-         <div id="viewOrderContainer" class="">
-            <!-- Conteúdo que será gerado pelo html -->
-            <div class="container">
+         <div id="viewOrderContainer">
+            <div  class="container">
 
                <div class="headerViewOrder">
                   <button id="closeSummaryOrder">
@@ -96,14 +95,14 @@
                         <use xlink:href="assets/images/icons.svg#ChevronDown" />
                      </svg>
                   </button>
-                  <!-- <h2>Seu pedido</h2> -->
                   <button id="btnEditItems">Editar itens</button>   
                </div>
-
-               <div class="summaryOrder">
+               
+               <div id="summaryOrder" class="summaryOrder">
                   <h2>Resumo do pedido</h2>
-
-                  <div class="item">
+                  
+                  <!-- Conteúdo  gerado pelo JS-->
+                  <!-- <div class="item">
                      <div class="item-container">
                         <div class="item-img">
                            <img src="assets/images/burguer-a.png" alt="">
@@ -116,40 +115,11 @@
                            <p>Pão, hambúrguer 150g, bacon, batata rústica, cheddar e molho especial da casa.</p>
                         </div>
                      </div>
-                     <p class="summaryItem">1 und/ Total R$ 25,90</p>
-                  </div>
-
-                  <div class="item">
-                     <div class="item-container">
-                        <div class="item-img">
-                           <img src="assets/images/burguer-a.png" alt="">
-                        </div>
-                        <div class="item-description">
-                           <div class="header">
-                              <h4>Buguer A</h4>
-                              <p class="price">R$ 25,90</p>
-                           </div>
-                           <p>Pão, hambúrguer 150g, bacon, batata rústica, cheddar e molho especial da casa.</p>
-                        </div>
+                     <div class="summaryItemContainer">
+                        <p class="itemObservations">Observações: <span>Colocar mais queijo,  aumentar a salada</span></p>
+                        <p class="summaryItem">1 und/ Total R$ 25,90</p>
                      </div>
-                     <p class="summaryItem">1 und/ Total R$ 25,90</p>
-                  </div>
-
-                  <div class="item">
-                     <div class="item-container">
-                        <div class="item-img">
-                           <img src="assets/images/burguer-a.png" alt="">
-                        </div>
-                        <div class="item-description">
-                           <div class="header">
-                              <h4>Buguer A</h4>
-                              <p class="price">R$ 25,90</p>
-                           </div>
-                           <p>Pão, hambúrguer 150g, bacon, batata rústica, cheddar e molho especial da casa.</p>
-                        </div>
-                     </div>
-                     <p class="summaryItem">1 und/ Total R$ 25,90</p>
-                  </div>
+                  </div> -->
                </div>
 
                <div class="deliveryDataContainer">
@@ -167,15 +137,15 @@
                   <ul>
                      <li>
                         <span>Subtotal </span>
-                        <span>R$ 80,70</span>
+                        <span id="subTotalOrder"></span>
                      </li>
                      <li>
                         <span>Taxa de entrega</span>
-                        <span>R$ 80,70</span>
+                        <span id="deliveryPriceSpan"></span>
                      </li>
                      <li>
                         <span>Total</span>
-                        <span>R$ 80,70</span>
+                        <span id="totalPriceOrder"></span>
                      </li>
                   </ul>
                </div>
