@@ -1,11 +1,10 @@
-//============================================================
-// ITENS DO CARDÁPIO
-//============================================================
 const modalSummaryOrder = document.getElementById('modalSummaryOrder');
 const btnViewOrder = document.getElementById('btnViewOrder');
-const deliveryPriceSpan = document.getElementById('deliveryPriceSpan');
 
 
+//============================================================
+// ITENS DO CARDÁPIO =========================================
+//============================================================
 const items = [
    { nome: "Burguer A", descricao: "Pão, hambúrguer 150g, bacon, batata rústica, cheddar e molho especial da casa.", preco: 25.90, observacoes: "", imagem: "burguer-a" },
    { nome: "Burguer B", descricao: "Pão, hambúrguer 150g, bacon, batata rústica, cheddar e molho especial da casa.", preco: 28.90, observacoes: "", imagem: "burguer-b" },
@@ -13,11 +12,15 @@ const items = [
    { nome: "Burguer D", descricao: "Pão, hambúrguer 150g, bacon, batata rústica, cheddar e molho especial da casa.", preco: 28.90, observacoes: "", imagem: "burguer-d" }
 ];
 
+// ====================
+// == PREÇO DO FRETE == 
+// ====================
 const deliveryPrice = 40.00;
 
 let order = [];
 let total = 0;
 
+// CRIA MENU DE ITEMS 
 const createMenu = () => {
    const menuItemsContainer = document.getElementById('menuItemsContainer');
 
@@ -71,7 +74,7 @@ const createMenu = () => {
       //============================================================
       btnAddItem.addEventListener('click', () => {
          btnAddItem.style.display = 'none';
-         
+
          if (order.length < 1) {
             btnViewOrder.style.display = "none";
          }
@@ -96,14 +99,6 @@ const createMenu = () => {
 
          const span = document.createElement('span');
          span.textContent = `Não adicionado`;
-
-         /* const btnDeleteItem = document.createElement('button');
-         btnDeleteItem.classList = 'btnDeleteItem';
-
-         const svgBtnDeleteItem = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-         const useBtnDeleteItem = document.createElementNS("http://www.w3.org/2000/svg", "use");
-         useBtnDeleteItem.setAttributeNS("http://www.w3.org/1999/xlink", "href", "assets/images/icons.svg#btnDeleteItem"); */
-
 
          const buttonMinus = document.createElement('button');
          buttonMinus.classList = 'btnMinus';
@@ -152,7 +147,7 @@ const createMenu = () => {
          buttons.appendChild(buttonAdd);
          itemMenu.appendChild(addNewItem);
 
-         // se não existe nenhum item na sacola exibido no modal a msg
+         // MSG PARA NENHUM ITEM NA SACOLA
          modalSummaryOrder.classList.add('show');
          let qtdOrderSummary = document.getElementById("qtdOrderSummary");
          if (order.length < 1) {
@@ -166,7 +161,6 @@ const createMenu = () => {
 function addToCart(item) {
    order.push(item);
    total += item.preco;
-   //console.log(total);
    updateOrderSummary();
 }
 
@@ -177,10 +171,10 @@ function removeFromCart(item) {
       order.splice(index, 1);
       total -= item.preco;
       updateOrderSummary();
-      //viewOrder(); // Atualiza o resumo do pedido ao remover um item
    }
 }
 
+// MODAL RESUMO DO PEDIDO
 function updateOrderSummary() {
    let qtdOrderSummary = document.getElementById("qtdOrderSummary");
    let totalPrice = document.getElementById('totalPrice');
@@ -197,14 +191,34 @@ function updateOrderSummary() {
 
 function viewOrder() {
    const viewOrderContainer = document.getElementById('viewOrderContainer');
+   document.body.style.overflow = 'hidden';
    if (order.length >= 1) {
       viewOrderContainer.classList.add('show');
    }
 
-   const summaryOrder = document.getElementById('summaryOrder');
+   // Input para Dados pessoais e de entrega 
+   const deliver = document.getElementById('deliver');
+   const pickUp = document.getElementById('pickUp');
+   const inAddress = document.getElementById('inAddress');
 
-   // Limpa o conteúdo anterior do summaryOrder
-   summaryOrder.innerHTML = "";
+   deliver.addEventListener('change', () => {
+      deliver.checked = true;
+      pickUp.checked = false;
+      inDeliveryAddress.classList.add('show');
+      inAddress.setAttribute('required', 'true');
+   });
+
+   pickUp.addEventListener('change', () => {
+      pickUp.checked = true;
+      deliver.checked = false;
+      inDeliveryAddress.classList.remove('show');
+      inAddress.removeAttribute('required');
+   });
+
+   // Resumo do pedido
+   const summaryOrderItems = document.getElementById('summaryOrderItems');
+
+   summaryOrderItems.innerHTML = "";
 
    // Cria um conjunto para manter o controle dos itens já exibidos
    const displayedItems = new Set();
@@ -259,7 +273,6 @@ function viewOrder() {
       summaryItem.classList = 'summaryItem';
       summaryItem.textContent = `${quantity} und/ Total R$ ${totalItem.toFixed(2)}`;
 
-
       divItem.appendChild(itemContainer);
       itemContainer.appendChild(itemImg);
       itemImg.appendChild(img);
@@ -272,7 +285,7 @@ function viewOrder() {
       summaryItemContainer.appendChild(itemObservationsP);
       summaryItemContainer.appendChild(summaryItem);
 
-      summaryOrder.appendChild(divItem);
+      summaryOrderItems.appendChild(divItem);
       // =============================
       // !!! CRIA OS ELEMENTO EM ITEMS
       // =============================
@@ -280,30 +293,34 @@ function viewOrder() {
       // Adiciona o nome do item ao conjunto de itens exibidos
       displayedItems.add(itemName);
 
-      /* VALORES TOTAIS */
-      const subTotalOrder = document.getElementById('subTotalOrder');
-      const totalPriceOrder = document.getElementById('totalPriceOrder');
-      subTotalOrder.textContent = `R$ ${total.toFixed(2)}` ;
+      // VALOR TOTAL SEM FRETE 
+      const valueSubTotalOrder = document.getElementById('valueSubTotalOrder');
+      valueSubTotalOrder.textContent = `R$ ${total.toFixed(2)}`;
       
-      deliveryPriceSpan.textContent = `R$ ${deliveryPrice.toFixed(2)}`;
-
+      // VALOR DO FRETE 
+      const valueDeliveryPrice = document.getElementById('valueDeliveryPrice');
+      valueDeliveryPrice.textContent = `R$ ${deliveryPrice.toFixed(2)}`;
+      
+      // VALOR TOTAL
+      const valueTotalPriceOrder = document.getElementById('valueTotalPriceOrder');
       let calcTotal = Number(deliveryPrice.toFixed(2)) + Number(total.toFixed(2));
-      //totalPriceOrder.textContent = `R$ ${total.toFixed(2)}` ;
-      totalPriceOrder.textContent = `R$ ${calcTotal.toFixed(2)}` ;
-      
+      valueTotalPriceOrder.textContent = `R$ ${calcTotal.toFixed(2)}`;
    });
 }
 
 btnViewOrder.addEventListener('click', viewOrder);
 
 
-// FECHA RESUMO DO PEDIDO 
+// FECHA MODAL DO PEDIDO 
 document.getElementById('closeSummaryOrder').addEventListener('click', () => {
    viewOrderContainer.classList.remove('show');
+   document.body.style.overflow = 'auto';
 });
 
+// FECHA MODAL DO PEDIDO 
 document.getElementById('btnEditItems').addEventListener('click', () => {
    viewOrderContainer.classList.remove('show');
+   document.body.style.overflow = 'auto';
 });
 
 window.onload = createMenu;

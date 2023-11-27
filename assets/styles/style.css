@@ -36,7 +36,7 @@ button {
    cursor: pointer;
 }
 
-h1, h2, h3, h4, p, a, span {
+h1, h2, h3, h4, p, a, span, label {
    color: #1B1B1B;
    font-size: 1rem;
 }
@@ -50,6 +50,7 @@ h1, h2, h3, h4, p, a, span {
 .main-container {
    background-color: var(--color-primary);
    padding-bottom: 10rem;
+   position: relative;
 }
 
 .about {
@@ -196,6 +197,10 @@ header div {
   margin-bottom: 0.5rem;
 }
 
+#menu #menuItemsContainer .item .addNewItem  textarea::placeholder {
+   color: #d1d1d1;
+}
+
 #menu #menuItemsContainer .item .addNewItem .buttons {
    display: flex;
    justify-content: end;
@@ -283,10 +288,17 @@ header div {
 
 #viewOrderContainer.show {
    display: block;
-   background-color: transparent;
+   background: red url(/assets/images/background.png);
+   position: fixed;
+   background-size: contain;
+   background-position: top;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
 }
 
-#viewOrderContainer .container {
+#viewOrderContainer > .container {
    position: fixed;
    top: 5rem;
    bottom: 0;
@@ -334,14 +346,135 @@ header div {
    margin-left: auto;
 }
 
+#viewOrderContainer #dataDelivery {
+   margin-top: 5rem;
+   padding-inline: 1.25rem;
+}
+
+#viewOrderContainer #dataDelivery > h2 {
+ font-size: 1.25rem;
+ text-align: center;
+ margin-bottom: 1rem;
+}
+
+#viewOrderContainer #inDataDelivery {
+   display: flex;
+   flex-direction: column;
+}
+
+#viewOrderContainer #inDataDelivery > label {
+   font-size: 0.9rem;
+   font-weight: 600;
+   margin-block: 0.9rem 0.2rem;
+   color: var(--color-tertiary);
+}
+
+#viewOrderContainer #inDataDelivery > input {
+   padding: 0.8rem;
+   font-size: 0.9rem;
+   border: 1px solid #d1d1d1;
+   border-radius: 0.4rem;
+   outline: none;
+}
+
+#viewOrderContainer #inDataDelivery .typeDelivery {
+   margin-top: 0.9rem;
+}
+
+#viewOrderContainer #inDataDelivery .typeDelivery > p {
+   font-size: 0.9rem;
+   margin-bottom: 0.8rem;
+   font-weight: 600;
+   color: var(--color-tertiary);
+}
+
+#viewOrderContainer #inDataDelivery .typeDelivery .container {
+   display: flex;
+   justify-content: left;
+   align-items: center;
+   column-gap: 2.5rem;
+}
+
+#viewOrderContainer #inDataDelivery .col {
+   display: flex;
+   align-items: center;
+   column-gap: 0.5rem;
+}
+
+#viewOrderContainer #inDataDelivery .col input[type="checkbox"] {
+   appearance: none;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   width: 1.2rem;
+   height: 1.2rem;
+   border-radius: 50%;
+   outline: none;
+   transition: background-color 0.3s;
+   flex-grow: 0;
+   flex-shrink: 0;
+   margin-bottom: auto;
+}
+
+#viewOrderContainer #inDataDelivery .col input[type="checkbox"] {
+   border: 1.2px solid var(--color-gray-medium);
+}
+
+#viewOrderContainer #inDataDelivery .col input[type="checkbox"]:checked {
+   background-color: var(--color-orange);
+   border-color: var(--color-orange);
+}
+
+#viewOrderContainer #inDataDelivery .col label {
+   font-size: 0.9rem;
+   color: var(--color-tertiary);
+}
+
+#viewOrderContainer #inDataDelivery #inDeliveryAddress {
+   display: none;
+}
+
+#viewOrderContainer #inDataDelivery #inDeliveryAddress.show {
+   display: flex;
+   flex-direction: column;
+   margin-block: 0.9rem;
+}
+
+#viewOrderContainer #inDataDelivery #inDeliveryAddress label {
+   font-size: 0.9rem;
+   font-weight: 600;
+   margin-bottom: 0.2rem;
+   color: var(--color-tertiary);
+}
+
+#viewOrderContainer #inDataDelivery #inDeliveryAddress > textarea {
+   padding: 1rem;
+   background-color: var(--color-primary);
+   font-size: 0.9rem;
+   border: 1px solid #d1d1d1;
+   border-radius: 0.4rem;
+   resize: none;
+   outline: none;
+   margin-bottom: 0.5rem;
+ }
+
+ #viewOrderContainer #inDataDelivery #inDeliveryAddress > textarea::placeholder {
+   color: #d1d1d1;
+ }
+
+
+#viewOrderContainer #inDataDelivery #btnAddData {
+   margin-top: 1rem;
+   margin-left: auto;
+}
+
 #viewOrderContainer .summaryOrder {
    margin-inline: 1.25rem;
    border-bottom: 2px solid #eeeeee ;
-   margin-top: 7rem;
+   margin-top: 2rem;
 }
 
 #viewOrderContainer .summaryOrder > h2 {
-   margin-block: 1rem;
+   margin-block: 3rem 1rem;
    font-size: 1.25rem;
 }
 
@@ -386,6 +519,7 @@ header div {
 #viewOrderContainer .summaryOrder .item .item-description > p {
    font-size: 0.9rem;
    margin-top: 0.5rem;
+   color: var(--color-tertiary);
 }
 
 #viewOrderContainer .summaryOrder .item .summaryItemContainer {
@@ -398,11 +532,13 @@ header div {
 #viewOrderContainer .summaryOrder .item .summaryItemContainer .itemObservations {
    font-size: 0.9rem;
    font-weight: 700;
+   color: var(--color-tertiary);
 }
 #viewOrderContainer .summaryOrder .item .summaryItemContainer .itemObservations > span {
    font-size: 0.9rem;
    font-weight: 400;
    font-style: italic;
+   color: var(--color-tertiary);
 }
 
 #viewOrderContainer .summaryOrder .item .summaryItem {
@@ -413,6 +549,10 @@ header div {
 #viewOrderContainer .deliveryDataContainer {
    padding-inline: 1.25rem;
    margin-top: 1.25rem;
+}
+
+#viewOrderContainer .deliveryDataContainer ul li {
+   color: var(--color-tertiary);
 }
 
 #viewOrderContainer .totalPriceContainer {

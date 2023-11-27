@@ -34,44 +34,8 @@
 
          <section id="menu">
             <h2>Menu Food Drinks</h2>
-            <div id="menuItemsContainer">
-               <!-- <div class="item">
-                  <div class="item-container">
-                     <div class="item-description">
-                        <h4>Buguer A</h4>
-                        <p>Pão, hambúrguer 150g, bacon, batata rústica, cheddar e molho especial da casa.</p>
-                        <p class="price">R$ 25,90</p>
-                     </div>
-                     <div class="item-img">
-                        <img src="assets/images/burguer-a.png" alt="">
-                     </div>
-                  </div>
-                  <button class="btnAddItem">Quero esse</button>
-
-                  <div class="addNewItem show">
-                     <form>
-                        <label for="burguer-a">Alguma observação?</label>
-                        <textarea id="burguer-a" cols="30" rows="3" placeholder="Ex: Tirar cheddar, etc..."></textarea>
-                        <div class="buttons">
-                           <button class="btnDeleteItem">
-                              <svg>
-                                 <use xlink:href="assets/images/icons.svg#btnDeleteItem" />
-                              </svg>
-                           </button>
-                           <div class="btnsQtd">
-                              <button>-</button>
-                              <span>1</span>
-                              <button>+</button>
-                           </div>
-                           <button class="btnAdd">Adicionar</button>
-                        </div>
-                     </form>
-                  </div>
-
-                  <div class="addNewItem"></div>
-                  
-               </div> -->
-            </div>
+            <!-- =================== -->
+            <div id="menuItemsContainer"></div>
          </section>
 
          <div id="modalSummaryOrder">
@@ -87,7 +51,7 @@
          </div>
 
          <div id="viewOrderContainer">
-            <div  class="container">
+            <div class="container">
 
                <div class="headerViewOrder">
                   <button id="closeSummaryOrder">
@@ -95,31 +59,46 @@
                         <use xlink:href="assets/images/icons.svg#ChevronDown" />
                      </svg>
                   </button>
-                  <button id="btnEditItems">Editar itens</button>   
+                  <button id="btnEditItems">Editar itens</button>
                </div>
-               
+
+               <div id="dataDelivery">
+                  <h2>Preencha os dados</h2>
+                  <form id="inDataDelivery">
+                     <label for="name">Qual o seu nome</label>
+                     <input type="text" id="inName" name="name" required>
+
+                     <label for="phone">WhatsApp</label>
+                     <input type="tel" id="inPhone" name="phone" required>
+
+                     <div class="typeDelivery">
+                        <p>Tipo de entrega</p>
+                        <div class="container">
+                           <div class="col">
+                              <input type="checkbox" id="deliver" name="deliver">
+                              <label for="deliver">Entregar</label>
+                           </div>
+                           <div class="col">
+                              <input type="checkbox" id="pickUp" name="pickUp">
+                              <label for="pickUp">Retirar no Local</label>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div id="inDeliveryAddress">
+                        <label for="address">Qual o endereço de entrega?</label>
+                        <textarea id="inAddress" name="anddress" cols="30" rows="3" placeholder="Ex.: Rua brasil, Qd. , Lt, Nº, Bairro"></textarea>
+                     </div>
+
+
+                     <button type="button" id="btnAddData">Adicionar dados</button>
+                  </form>
+               </div>
+
                <div id="summaryOrder" class="summaryOrder">
                   <h2>Resumo do pedido</h2>
-                  
-                  <!-- Conteúdo  gerado pelo JS-->
-                  <!-- <div class="item">
-                     <div class="item-container">
-                        <div class="item-img">
-                           <img src="assets/images/burguer-a.png" alt="">
-                        </div>
-                        <div class="item-description">
-                           <div class="header">
-                              <h4>Buguer A</h4>
-                              <p class="price">R$ 25,90</p>
-                           </div>
-                           <p>Pão, hambúrguer 150g, bacon, batata rústica, cheddar e molho especial da casa.</p>
-                        </div>
-                     </div>
-                     <div class="summaryItemContainer">
-                        <p class="itemObservations">Observações: <span>Colocar mais queijo,  aumentar a salada</span></p>
-                        <p class="summaryItem">1 und/ Total R$ 25,90</p>
-                     </div>
-                  </div> -->
+                  <!-- =================== -->
+                  <div id="summaryOrderItems"></div>
                </div>
 
                <div class="deliveryDataContainer">
@@ -137,15 +116,15 @@
                   <ul>
                      <li>
                         <span>Subtotal </span>
-                        <span id="subTotalOrder"></span>
+                        <span id="valueSubTotalOrder"></span>
                      </li>
                      <li>
                         <span>Taxa de entrega</span>
-                        <span id="deliveryPriceSpan"></span>
+                        <span id="valueDeliveryPrice"></span>
                      </li>
                      <li>
                         <span>Total</span>
-                        <span id="totalPriceOrder"></span>
+                        <span id="valueTotalPriceOrder"></span>
                      </li>
                   </ul>
                </div>
@@ -153,9 +132,8 @@
                <div class="submitOrderContainer">
                   <button id="submitOrder">Enviar pedido</button>
                </div>
-               
+
             </div>
-            <!-- ! Conteúdo que será gerado pelo html -->
          </div>
 
       </div>
