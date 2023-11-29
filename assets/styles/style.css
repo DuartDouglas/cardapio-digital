@@ -169,7 +169,7 @@ header div {
 #menu #menuItemsContainer .item .addNewItem {
    display: flex;
    flex-direction: column;
-   margin: 0.2rem;
+   margin: 0.5rem 0.2rem 0.2rem;
    padding: 1rem 0.5rem;
    background-color: var(--color-gray-light);
 }
@@ -209,6 +209,7 @@ header div {
 
 #menu #menuItemsContainer .item .addNewItem  .buttons span {
    margin-right: auto;
+   font-family: 'Open Sans', sans-serif; 
 }
 
 #menu #menuItemsContainer .item .addNewItem  .buttons .btnMinus {
@@ -282,35 +283,56 @@ header div {
    font-weight: 700;
 }
 
-#viewOrderContainer {
+#viewOrder {
    display: none;
 }
 
-#viewOrderContainer.show {
-   display: block;
-   background: red url(/assets/images/background.png);
-   position: fixed;
+#viewOrder.show {
+   background-color: red;
+   display: flex;
+   justify-content: center;
+   position: relative;
+   z-index: 10;
+   top: 0;
+   left: 0;
+   right: 0;
+}
+
+#viewOrder .viewOrderContainer {
+   background: var(--color-orange) url(/assets/images/background.png);
    background-size: contain;
    background-position: top;
+   position: fixed;
    top: 0;
    left: 0;
    right: 0;
    bottom: 0;
 }
 
-#viewOrderContainer > .container {
+#viewOrder .viewOrderContainer > .container {
    position: fixed;
-   top: 5rem;
+   top: 0rem;
    bottom: 0;
    left: 0;
    right: 0;
+   margin-top: 7rem;
    background-color: var(--color-primary);
    border-radius: 2rem 2rem 0rem 0rem;
-   overflow-y: auto;
-   padding-bottom: 3rem;
 }
 
-#viewOrderContainer .headerViewOrder {
+#viewOrder .viewOrderContainer > .container > .container {
+   position: fixed;
+   top: 0rem;
+   margin-top: 11rem;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   overflow-y: auto;
+   overflow-x: hidden;
+   padding-bottom: 5rem;
+}
+
+#viewOrder .headerViewOrder {
    background-color: #eeeeee;
    border-radius: 2rem 2rem 0rem 0rem;
    display: flex;
@@ -320,25 +342,26 @@ header div {
    position: fixed;
    left: 0;
    right: 0;
+   height: 4rem;
 }
 
-#viewOrderContainer .headerViewOrder button:nth-child(1) {
+#viewOrder .headerViewOrder button:nth-child(1) {
    background-color: transparent;
    margin-right: auto;
 }
 
-#viewOrderContainer .headerViewOrder button svg {
+#viewOrder .headerViewOrder button svg {
    fill: var(--color-orange);
    width: 1rem;
    height: 1rem;
 }
 
-#viewOrderContainer .headerViewOrder h2 {
+#viewOrder .headerViewOrder h2 {
    color: var(--color-gray-medium);
    text-align: center;
 }
 
-#viewOrderContainer .headerViewOrder #btnEditItems {
+#viewOrder .headerViewOrder #btnEditItems {
    background-color: transparent;
    color: var(--color-orange);
    font-size: 0.9rem;
@@ -346,30 +369,38 @@ header div {
    margin-left: auto;
 }
 
-#viewOrderContainer #dataDelivery {
-   margin-top: 5rem;
+#viewOrder #dataDelivery {
+   margin-top: 2rem;
    padding-inline: 1.25rem;
 }
 
-#viewOrderContainer #dataDelivery > h2 {
+#viewOrder #dataDelivery > h2 {
  font-size: 1.25rem;
  text-align: center;
  margin-bottom: 1rem;
 }
 
-#viewOrderContainer #inDataDelivery {
+#viewOrder #inDataDelivery {
    display: flex;
    flex-direction: column;
 }
 
-#viewOrderContainer #inDataDelivery > label {
+#viewOrder #inDataDelivery > label {
    font-size: 0.9rem;
    font-weight: 600;
    margin-block: 0.9rem 0.2rem;
    color: var(--color-tertiary);
+   display: flex;
+   align-items: center;
 }
 
-#viewOrderContainer #inDataDelivery > input {
+#viewOrder #dataDelivery .alert {
+   font-size: 0.6rem;
+   color: red;
+   margin-left: auto;
+}
+
+#viewOrder #inDataDelivery > input {
    padding: 0.8rem;
    font-size: 0.9rem;
    border: 1px solid #d1d1d1;
@@ -377,31 +408,37 @@ header div {
    outline: none;
 }
 
-#viewOrderContainer #inDataDelivery .typeDelivery {
+#viewOrder #inDataDelivery .typeDelivery {
    margin-top: 0.9rem;
 }
 
-#viewOrderContainer #inDataDelivery .typeDelivery > p {
+#viewOrder #inDataDelivery .typeDelivery > p {
    font-size: 0.9rem;
    margin-bottom: 0.8rem;
    font-weight: 600;
    color: var(--color-tertiary);
+   display: flex;
+   align-items: center;
 }
 
-#viewOrderContainer #inDataDelivery .typeDelivery .container {
+#viewOrder #inDataDelivery .typeDelivery > p .alert {
+   margin-left: auto;
+}
+
+#viewOrder #inDataDelivery .typeDelivery .container {
    display: flex;
    justify-content: left;
    align-items: center;
    column-gap: 2.5rem;
 }
 
-#viewOrderContainer #inDataDelivery .col {
+#viewOrder #inDataDelivery .col {
    display: flex;
    align-items: center;
    column-gap: 0.5rem;
 }
 
-#viewOrderContainer #inDataDelivery .col input[type="checkbox"] {
+#viewOrder #inDataDelivery .col input[type="checkbox"] {
    appearance: none;
    -webkit-appearance: none;
    -moz-appearance: none;
@@ -415,38 +452,44 @@ header div {
    margin-bottom: auto;
 }
 
-#viewOrderContainer #inDataDelivery .col input[type="checkbox"] {
+#viewOrder #inDataDelivery .col input[type="checkbox"] {
    border: 1.2px solid var(--color-gray-medium);
 }
 
-#viewOrderContainer #inDataDelivery .col input[type="checkbox"]:checked {
+#viewOrder #inDataDelivery .col input[type="checkbox"]:checked {
    background-color: var(--color-orange);
    border-color: var(--color-orange);
 }
 
-#viewOrderContainer #inDataDelivery .col label {
+#viewOrder #inDataDelivery .col label {
    font-size: 0.9rem;
    color: var(--color-tertiary);
 }
 
-#viewOrderContainer #inDataDelivery #inDeliveryAddress {
+#viewOrder #inDataDelivery #inDeliveryAddress {
    display: none;
 }
 
-#viewOrderContainer #inDataDelivery #inDeliveryAddress.show {
+#viewOrder #inDataDelivery #inDeliveryAddress.show {
    display: flex;
    flex-direction: column;
-   margin-block: 0.9rem;
+   margin-block: 1rem 0.9rem;
 }
 
-#viewOrderContainer #inDataDelivery #inDeliveryAddress label {
+#viewOrder #inDataDelivery #inDeliveryAddress label {
    font-size: 0.9rem;
    font-weight: 600;
    margin-bottom: 0.2rem;
    color: var(--color-tertiary);
+   display: flex;
+   align-items: center;
 }
 
-#viewOrderContainer #inDataDelivery #inDeliveryAddress > textarea {
+#viewOrder #inDataDelivery #inDeliveryAddress label .alert {
+   margin-left: auto;
+}
+
+#viewOrder #inDataDelivery #inDeliveryAddress > textarea {
    padding: 1rem;
    background-color: var(--color-primary);
    font-size: 0.9rem;
@@ -457,132 +500,141 @@ header div {
    margin-bottom: 0.5rem;
  }
 
- #viewOrderContainer #inDataDelivery #inDeliveryAddress > textarea::placeholder {
+ #viewOrder #inDataDelivery #inDeliveryAddress > textarea::placeholder {
    color: #d1d1d1;
  }
 
 
-#viewOrderContainer #inDataDelivery #btnAddData {
+#viewOrder #inDataDelivery #btnAddData {
    margin-top: 1rem;
    margin-left: auto;
 }
 
-#viewOrderContainer .summaryOrder {
+#viewOrder .summaryOrder {
    margin-inline: 1.25rem;
    border-bottom: 2px solid #eeeeee ;
    margin-top: 2rem;
 }
 
-#viewOrderContainer .summaryOrder > h2 {
+#viewOrder .summaryOrder > h2 {
    margin-block: 3rem 1rem;
    font-size: 1.25rem;
 }
 
-#viewOrderContainer .summaryOrder .item {
+#viewOrder .summaryOrder .item {
    border-top: 2px solid #eeeeee ;
    padding-block: 1rem;
 }
 
-#viewOrderContainer .summaryOrder .item-container {
+#viewOrder .summaryOrder .item-container {
    display: flex;
    align-items: flex-start;
 }
 
-#viewOrderContainer .summaryOrder .item .item-img {
+#viewOrder .summaryOrder .item .item-img {
    display: flex;
    align-items: center;
    justify-content: center;
    margin-right: 0.5rem;
 }
 
-#viewOrderContainer .summaryOrder .item .item-img img {
+#viewOrder .summaryOrder .item .item-img img {
    width: 5rem;
    border-radius: 0.4rem;
 }
 
-#viewOrderContainer .summaryOrder .item .item-description .header {
+#viewOrder .summaryOrder .item .item-description .header {
    display: flex;
    align-items: center;
 }
 
-#viewOrderContainer .summaryOrder .item .item-description .header h4 {
+#viewOrder .summaryOrder .item .item-description .header h4 {
    font-size: 0.9rem;
 }
 
-#viewOrderContainer .summaryOrder .item .item-description .header p {
+#viewOrder .summaryOrder .item .item-description .header p {
    font-size: 0.9rem;
    margin-left: auto;
    font-family: 'Open Sans', sans-serif; 
    font-weight: 700;
 }
 
-#viewOrderContainer .summaryOrder .item .item-description > p {
+#viewOrder .summaryOrder .item .item-description > p {
    font-size: 0.9rem;
    margin-top: 0.5rem;
    color: var(--color-tertiary);
 }
 
-#viewOrderContainer .summaryOrder .item .summaryItemContainer {
+#viewOrder .summaryOrder .item .summaryItemContainer {
    display: flex;
    flex-direction: column;
    align-items: end;
    margin-top: 0.8rem;
 }
 
-#viewOrderContainer .summaryOrder .item .summaryItemContainer .itemObservations {
+#viewOrder .summaryOrder .item .summaryItemContainer .itemObservations {
    font-size: 0.9rem;
    font-weight: 700;
    color: var(--color-tertiary);
 }
-#viewOrderContainer .summaryOrder .item .summaryItemContainer .itemObservations > span {
+#viewOrder .summaryOrder .item .summaryItemContainer .itemObservations > span {
    font-size: 0.9rem;
    font-weight: 400;
    font-style: italic;
    color: var(--color-tertiary);
 }
 
-#viewOrderContainer .summaryOrder .item .summaryItem {
+#viewOrder .summaryOrder .item .summaryItem {
    color: var(--color-orange);
    font-family: 'Open Sans', sans-serif; 
 }
 
-#viewOrderContainer .deliveryDataContainer {
+#viewOrder .deliveryDataContainer {
    padding-inline: 1.25rem;
    margin-top: 1.25rem;
 }
 
-#viewOrderContainer .deliveryDataContainer ul li {
+#viewOrder .deliveryDataContainer ul {
+   padding-top: 1rem;
+}
+
+#viewOrder .deliveryDataContainer ul li {
    color: var(--color-tertiary);
 }
 
-#viewOrderContainer .totalPriceContainer {
+#viewOrder .deliveryDataContainer #alertData {
+   color: var(--color-red);
+   font-weight: 700;
+}
+
+#viewOrder .totalPriceContainer {
    padding-inline: 1.25rem;
    margin-block: 1.3rem;
 }
 
-#viewOrderContainer .totalPriceContainer ul li {
+#viewOrder .totalPriceContainer ul li {
    display: flex;
    justify-content: space-between;
    padding-block: 0.3rem;
 }
 
-#viewOrderContainer .totalPriceContainer ul li span {
+#viewOrder .totalPriceContainer ul li span {
    font-weight: 700;
 }
 
-#viewOrderContainer .totalPriceContainer ul li span:nth-child(2) {
+#viewOrder .totalPriceContainer ul li span:nth-child(2) {
    font-family: 'Open Sans', sans-serif; 
 }
 
-#viewOrderContainer .container .submitOrderContainer {
+#viewOrder .container .submitOrderContainer {
    display: flex;
    justify-content: end;
    padding-inline: 1.25rem;
 }
 
-#viewOrderContainer .totalPriceContainer ul li:nth-child(2) span:nth-child(2) {
+/* #viewOrder .totalPriceContainer ul li:nth-child(2) span:nth-child(2) {
    color: var(--color-green);
-}
+} */
 
 @media screen and (min-width: 750px) {
    .main-container {
@@ -591,6 +643,30 @@ header div {
 
    #modalSummaryOrder > div {
       width: 750px;
+   }
+
+   #viewOrder .viewOrderContainer {
+      width: 750px;
+      margin-inline: auto;
+   }
+
+   #viewOrder .container {
+      width: 750px;
+      margin-inline: auto;
+   }
+   
+   #viewOrder .viewOrderContainer > .container {
+      margin-top: 13rem;
+   }
+
+   #viewOrder .viewOrderContainer > .container > .container { 
+      margin-top: 17rem;
+   }
+
+
+   #viewOrder .headerViewOrder {
+      width: 750px;
+      margin-inline: auto;
    }
 }
 

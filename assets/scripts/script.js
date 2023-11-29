@@ -189,16 +189,17 @@ function updateOrderSummary() {
    }
 }
 
-function viewOrder() {
-   const viewOrderContainer = document.getElementById('viewOrderContainer');
+function showViewOrder() {
+   const viewOrder = document.getElementById('viewOrder');
    document.body.style.overflow = 'hidden';
    if (order.length >= 1) {
-      viewOrderContainer.classList.add('show');
+      viewOrder.classList.add('show');
    }
 
    // Input para Dados pessoais e de entrega 
    const deliver = document.getElementById('deliver');
    const pickUp = document.getElementById('pickUp');
+   const inDeliveryAddress = document.getElementById('inDeliveryAddress');
    const inAddress = document.getElementById('inAddress');
 
    deliver.addEventListener('change', () => {
@@ -206,6 +207,8 @@ function viewOrder() {
       pickUp.checked = false;
       inDeliveryAddress.classList.add('show');
       inAddress.setAttribute('required', 'true');
+      // UPDATE ORDER VALUES COM FRETE
+      orderValues();
    });
 
    pickUp.addEventListener('change', () => {
@@ -213,16 +216,117 @@ function viewOrder() {
       deliver.checked = false;
       inDeliveryAddress.classList.remove('show');
       inAddress.removeAttribute('required');
+      // UPDATE ORDER VALUES SEM FRETE
+      orderValues();
    });
+
+   // DADOS PARA ENTREGA 
+   function displayDeliveryData(inName, inPhone, address) {
+      const nameData = document.getElementById('nameData');
+      const phoneData = document.getElementById('phoneData');
+      const addressData = document.getElementById('addressData');
+      const alertData = document.getElementById('alertData');
+
+      nameData.textContent = inName;
+      phoneData.textContent = inPhone;
+      addressData.textContent = address;
+
+      //let alert = document.querySelectorAll('.alert');
+      const labelName = document.querySelector('label[for="name"]');
+      const alertName = labelName.querySelector('.alert');
+      const labelPhone = document.querySelector('label[for="phone"]');
+      const alertPhone = labelPhone.querySelector('.alert');
+      const labelAddress = document.querySelector('label[for="address"]');
+      const alertAddress = labelAddress.querySelector('.alert');
+      const typeDelivery = document.querySelector('.typeDelivery');
+      const alertTypeDelivery = typeDelivery.querySelector('.alert');
+
+      if ((inName === "") && (inPhone === "")) {
+         alertData.textContent = "Prencha os dados corretamente";
+         alertData.style.color = '#FF0000';
+
+         alertName.textContent = "Atenção! Campos obrigatório";
+         alertPhone.textContent = "Atenção! Campos obrigatório";
+         alertName.style.color = '#FF0000';
+         alertPhone.style.color = '#FF0000';
+      } else if (inName === "") {
+         alertData.textContent = "Prencha o nome corretamente";
+         alertData.style.color = '#FF0000';
+
+         alertName.textContent = "Atenção! Nome obrigatório";
+         alertName.style.color = '#FF0000';
+      } else if (inPhone === "") {
+         alertData.textContent = "Prencha o telefone corretamente";
+         alertData.style.color = '#FF0000';
+
+         alertPhone.textContent = "Atenção! Telefone obrigatório"
+         alertPhone.style.color = '#FF0000';
+      } else {
+         alertData.textContent = "";
+
+         alertName.style.color = 'green';
+         alertPhone.style.color = 'green';
+      }
+
+      if (inName !== "") {
+         alertName.textContent = "Ok!";
+         alertName.style.color = 'green';
+      }
+
+      if (inPhone !== "") {
+         alertPhone.textContent = "Ok!";
+         alertPhone.style.color = 'green';
+      }
+
+      if (!deliver.checked || !pickUp.checked) {
+         alertTypeDelivery.textContent = "Atenção! selecione o tipo de entrega";
+         alertTypeDelivery.style.color = '#FF0000';
+      } 
+      
+      if (deliver.checked || pickUp.checked) {
+         alertTypeDelivery.textContent = "Ok!";
+         alertTypeDelivery.style.color = 'green';
+      } 
+      
+      if (deliver.checked) {
+         if (address === "") {
+            alertData.textContent = "Prencha o endereço de entrega corretamente";
+            alertData.style.color = '#FF0000';
+
+            alertAddress.textContent = "Atenção! Endereço obrigatório";
+            alertAddress.style.color = '#FF0000';
+         } else {
+            alertData.textContent = "";
+
+            alertAddress.textContent = "Ok!";
+            alertAddress.style.color = 'green';
+         }
+      }
+
+   }
+
+   function inDeliveryData() {
+      const inName = document.getElementById('inName').value;
+      const inPhone = document.getElementById('inPhone').value;
+
+      let address = "";
+
+
+      if (deliver.checked) {
+         const inAddressValue = inAddress.value;
+
+         address = inAddressValue;
+      }
+      displayDeliveryData(inName, inPhone, address);
+   }
+   document.getElementById('btnAddData').addEventListener('click', inDeliveryData);
+
 
    // Resumo do pedido
    const summaryOrderItems = document.getElementById('summaryOrderItems');
-
    summaryOrderItems.innerHTML = "";
-
    // Cria um conjunto para manter o controle dos itens já exibidos
    const displayedItems = new Set();
-
    // Itera sobre os itens no carrinho
    order.forEach(item => {
       const itemName = item.nome;
@@ -292,34 +396,55 @@ function viewOrder() {
 
       // Adiciona o nome do item ao conjunto de itens exibidos
       displayedItems.add(itemName);
-
-      // VALOR TOTAL SEM FRETE 
-      const valueSubTotalOrder = document.getElementById('valueSubTotalOrder');
-      valueSubTotalOrder.textContent = `R$ ${total.toFixed(2)}`;
-      
-      // VALOR DO FRETE 
-      const valueDeliveryPrice = document.getElementById('valueDeliveryPrice');
-      valueDeliveryPrice.textContent = `R$ ${deliveryPrice.toFixed(2)}`;
-      
-      // VALOR TOTAL
-      const valueTotalPriceOrder = document.getElementById('valueTotalPriceOrder');
-      let calcTotal = Number(deliveryPrice.toFixed(2)) + Number(total.toFixed(2));
-      valueTotalPriceOrder.textContent = `R$ ${calcTotal.toFixed(2)}`;
    });
+
+
+
+
+   // SHOW ORDER VALUES 
+   orderValues();
 }
 
-btnViewOrder.addEventListener('click', viewOrder);
+btnViewOrder.addEventListener('click', showViewOrder);
+
+function orderValues() {
+   // VALOR TOTAL SEM FRETE 
+   const valueSubTotalOrder = document.getElementById('valueSubTotalOrder');
+   valueSubTotalOrder.textContent = `R$ ${total.toFixed(2)}`;
+   // VALOR DO FRETE
+   const valueDeliveryPrice = document.getElementById('valueDeliveryPrice');
+   // VALOR TOTAL
+   const valueTotalPriceOrder = document.getElementById('valueTotalPriceOrder');
+   let calcTotal;
+
+   if (deliver.checked) {
+      valueDeliveryPrice.textContent = `R$ ${deliveryPrice.toFixed(2)}`;
+      valueDeliveryPrice.style.color = '#007A3B';
+      calcTotal = Number(deliveryPrice.toFixed(2)) + Number(total.toFixed(2));
+      calcTotal = calcTotal.toFixed(2);
+   } else if (pickUp.checked) {
+      valueDeliveryPrice.textContent = 'Não se aplica';
+      valueDeliveryPrice.style.color = '#007A3B';
+      calcTotal = total.toFixed(2);
+   } else {
+      // Se nenhuma opção estiver selecionada
+      valueDeliveryPrice.textContent = 'Escolha o frete';
+      valueDeliveryPrice.style.color = '#FF0000';
+      calcTotal = total.toFixed(2);
+   }
+   valueTotalPriceOrder.textContent = `R$ ${calcTotal}`;
+}
 
 
 // FECHA MODAL DO PEDIDO 
 document.getElementById('closeSummaryOrder').addEventListener('click', () => {
-   viewOrderContainer.classList.remove('show');
+   viewOrder.classList.remove('show');
    document.body.style.overflow = 'auto';
 });
 
 // FECHA MODAL DO PEDIDO 
 document.getElementById('btnEditItems').addEventListener('click', () => {
-   viewOrderContainer.classList.remove('show');
+   viewOrder.classList.remove('show');
    document.body.style.overflow = 'auto';
 });
 

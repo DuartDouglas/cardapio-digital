@@ -50,89 +50,93 @@
             </div>
          </div>
 
-         <div id="viewOrderContainer">
-            <div class="container">
+         <div id="viewOrder">
+            <div class="viewOrderContainer">
+               <div class="container">
 
-               <div class="headerViewOrder">
-                  <button id="closeSummaryOrder">
-                     <svg>
-                        <use xlink:href="assets/images/icons.svg#ChevronDown" />
-                     </svg>
-                  </button>
-                  <button id="btnEditItems">Editar itens</button>
-               </div>
+                  <div class="headerViewOrder">
+                     <button id="closeSummaryOrder">
+                        <svg>
+                           <use xlink:href="assets/images/icons.svg#ChevronDown" />
+                        </svg>
+                     </button>
+                     <button id="btnEditItems">Editar itens</button>
+                  </div>
 
-               <div id="dataDelivery">
-                  <h2>Preencha os dados</h2>
-                  <form id="inDataDelivery">
-                     <label for="name">Qual o seu nome</label>
-                     <input type="text" id="inName" name="name" required>
-
-                     <label for="phone">WhatsApp</label>
-                     <input type="tel" id="inPhone" name="phone" required>
-
-                     <div class="typeDelivery">
-                        <p>Tipo de entrega</p>
-                        <div class="container">
-                           <div class="col">
-                              <input type="checkbox" id="deliver" name="deliver">
-                              <label for="deliver">Entregar</label>
+                  <div class="container">
+                     <div id="dataDelivery">
+                        <h2>Preencha seus dados</h2>
+                        <form id="inDataDelivery">
+                           <label for="name">Qual o seu nome ?<span class="alert"> campo obrigatório</span></label>
+                           <input type="text" id="inName" name="name" required>
+      
+                           <label for="phone">WhatsApp <span class="alert"> Campo obrigatório</span></label>
+                           <input type="tel" id="inPhone" name="phone" required>
+      
+                           <div class="typeDelivery">
+                              <p>Tipo de entrega <span class="alert">Selecione o tipo de entrega</span></p>
+                              <div class="container">
+                                 <div class="col">
+                                    <input type="checkbox" id="deliver" name="deliver">
+                                    <label for="deliver">Entregar</label>
+                                 </div>
+                                 <div class="col">
+                                    <input type="checkbox" id="pickUp" name="pickUp">
+                                    <label for="pickUp">Retirar no Local</label>
+                                 </div>
+                              </div>
                            </div>
-                           <div class="col">
-                              <input type="checkbox" id="pickUp" name="pickUp">
-                              <label for="pickUp">Retirar no Local</label>
+      
+                           <div id="inDeliveryAddress">
+                              <label for="address">Qual o endereço de entrega?<span class="alert">Campo obrigatório</span></label>
+                              <textarea id="inAddress" name="anddress" cols="30" rows="3" placeholder="Ex.: Rua brasil, Qd. , Lt, Nº, Bairro"></textarea>
                            </div>
-                        </div>
+      
+      
+                           <button type="button" id="btnAddData">Adicionar dados</button>
+                        </form>
+                     </div>
+      
+                     <div id="summaryOrder" class="summaryOrder">
+                        <h2>Resumo do pedido</h2>
+                        <!-- =================== -->
+                        <div id="summaryOrderItems"></div>
+                     </div>
+      
+                     <div class="deliveryDataContainer">
+                        <h2>Dados para Entrega</h2>
+                        <ul>
+                           <li id="nameData"></li>
+                           <li id="phoneData"></li>
+                           <li id="addressData"></li>
+                           <li id="alertData">Atenção! <br>Preencha seus dados</li>
+                        </ul>
+                     </div>
+      
+                     <div class="totalPriceContainer">
+                        <ul>
+                           <li>
+                              <span>Subtotal </span>
+                              <span id="valueSubTotalOrder"></span>
+                           </li>
+                           <li>
+                              <span>Taxa de entrega</span>
+                              <span id="valueDeliveryPrice"></span>
+                           </li>
+                           <li>
+                              <span>Total</span>
+                              <span id="valueTotalPriceOrder"></span>
+                           </li>
+                        </ul>
+                     </div>
+      
+                     <div class="submitOrderContainer">
+                        <button id="submitOrder">Enviar pedido</button>
                      </div>
 
-                     <div id="inDeliveryAddress">
-                        <label for="address">Qual o endereço de entrega?</label>
-                        <textarea id="inAddress" name="anddress" cols="30" rows="3" placeholder="Ex.: Rua brasil, Qd. , Lt, Nº, Bairro"></textarea>
-                     </div>
-
-
-                     <button type="button" id="btnAddData">Adicionar dados</button>
-                  </form>
+                  </div>
+   
                </div>
-
-               <div id="summaryOrder" class="summaryOrder">
-                  <h2>Resumo do pedido</h2>
-                  <!-- =================== -->
-                  <div id="summaryOrderItems"></div>
-               </div>
-
-               <div class="deliveryDataContainer">
-                  <h2>Dados para Entrega</h2>
-                  <ul>
-                     <li>Douglas Duarte</li>
-                     <li>62 9 9999999</li>
-                     <li>Rua x, Nº 2000</li>
-                     <li>Bairro Tal</li>
-                     <li>Anápolis Goiàs</li>
-                  </ul>
-               </div>
-
-               <div class="totalPriceContainer">
-                  <ul>
-                     <li>
-                        <span>Subtotal </span>
-                        <span id="valueSubTotalOrder"></span>
-                     </li>
-                     <li>
-                        <span>Taxa de entrega</span>
-                        <span id="valueDeliveryPrice"></span>
-                     </li>
-                     <li>
-                        <span>Total</span>
-                        <span id="valueTotalPriceOrder"></span>
-                     </li>
-                  </ul>
-               </div>
-
-               <div class="submitOrderContainer">
-                  <button id="submitOrder">Enviar pedido</button>
-               </div>
-
             </div>
          </div>
 
