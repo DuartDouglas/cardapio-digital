@@ -632,9 +632,35 @@ header div {
    padding-inline: 1.25rem;
 }
 
-/* #viewOrder .totalPriceContainer ul li:nth-child(2) span:nth-child(2) {
-   color: var(--color-green);
-} */
+#modalOrderSent {
+   display: none;
+}
+
+#modalOrderSent.show {
+   display: flex;
+   background-color: rgba(27, 27, 27, 0.753);
+   position: fixed;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   justify-content: center;
+   align-items: center;
+   z-index: 100;
+}
+
+#modalOrderSent > .orderSentcontainer {
+   background-color: var(--color-primary);
+   padding: 1rem;
+   border-radius: 0.4rem;
+   display: flex;
+   flex-direction: column;
+   margin-inline: 3rem;
+}
+
+#modalOrderSent #btnOrderSent {
+   margin-left: auto;
+}
 
 @media screen and (min-width: 750px) {
    .main-container {

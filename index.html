@@ -69,10 +69,10 @@
                         <form id="inDataDelivery">
                            <label for="name">Qual o seu nome ?<span class="alert"> campo obrigatório</span></label>
                            <input type="text" id="inName" name="name" required>
-      
+
                            <label for="phone">WhatsApp <span class="alert"> Campo obrigatório</span></label>
                            <input type="tel" id="inPhone" name="phone" required>
-      
+
                            <div class="typeDelivery">
                               <p>Tipo de entrega <span class="alert">Selecione o tipo de entrega</span></p>
                               <div class="container">
@@ -86,23 +86,25 @@
                                  </div>
                               </div>
                            </div>
-      
+
                            <div id="inDeliveryAddress">
-                              <label for="address">Qual o endereço de entrega?<span class="alert">Campo obrigatório</span></label>
-                              <textarea id="inAddress" name="anddress" cols="30" rows="3" placeholder="Ex.: Rua brasil, Qd. , Lt, Nº, Bairro"></textarea>
+                              <label for="address">Qual o endereço de entrega?<span class="alert">Campo
+                                    obrigatório</span></label>
+                              <textarea id="inAddress" name="anddress" cols="30" rows="3"
+                                 placeholder="Ex.: Rua brasil, Qd. , Lt, Nº, Bairro"></textarea>
                            </div>
-      
-      
+
+
                            <button type="button" id="btnAddData">Adicionar dados</button>
                         </form>
                      </div>
-      
+
                      <div id="summaryOrder" class="summaryOrder">
                         <h2>Resumo do pedido</h2>
                         <!-- =================== -->
                         <div id="summaryOrderItems"></div>
                      </div>
-      
+
                      <div class="deliveryDataContainer">
                         <h2>Dados para Entrega</h2>
                         <ul>
@@ -112,7 +114,7 @@
                            <li id="alertData">Atenção! <br>Preencha seus dados</li>
                         </ul>
                      </div>
-      
+
                      <div class="totalPriceContainer">
                         <ul>
                            <li>
@@ -129,17 +131,22 @@
                            </li>
                         </ul>
                      </div>
-      
+
                      <div class="submitOrderContainer">
                         <button id="submitOrder">Enviar pedido</button>
                      </div>
-
                   </div>
-   
+
                </div>
             </div>
          </div>
 
+         <div id="modalOrderSent">
+            <form class="orderSentcontainer">
+               <p>Seu pedido será enviado pelo WhatsApp</p>
+               <button type="submit" id="btnOrderSent">Ok</button>
+            </form>
+         </div>
       </div>
    </div>
 

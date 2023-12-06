@@ -281,13 +281,13 @@ function showViewOrder() {
       if (!deliver.checked || !pickUp.checked) {
          alertTypeDelivery.textContent = "Atenção! selecione o tipo de entrega";
          alertTypeDelivery.style.color = '#FF0000';
-      } 
-      
+      }
+
       if (deliver.checked || pickUp.checked) {
          alertTypeDelivery.textContent = "Ok!";
          alertTypeDelivery.style.color = 'green';
-      } 
-      
+      }
+
       if (deliver.checked) {
          if (address === "") {
             alertData.textContent = "Prencha o endereço de entrega corretamente";
@@ -398,11 +398,12 @@ function showViewOrder() {
       displayedItems.add(itemName);
    });
 
-
-
-
    // SHOW ORDER VALUES 
    orderValues();
+
+   const submitOrder = document.getElementById('submitOrder');
+   
+   submitOrder.addEventListener('click', showModalSent);
 }
 
 btnViewOrder.addEventListener('click', showViewOrder);
@@ -447,5 +448,49 @@ document.getElementById('btnEditItems').addEventListener('click', () => {
    viewOrder.classList.remove('show');
    document.body.style.overflow = 'auto';
 });
+
+function showModalSent() {
+   const modalOrderSent = document.getElementById('modalOrderSent');
+   const btnOrderSent = document.getElementById('btnOrderSent');
+   
+   modalOrderSent.classList.add('show');
+   btnOrderSent.addEventListener('click', ()=> {
+      modalOrderSent.classList.remove('show');
+      sendOrder();
+   })
+}
+
+
+function sendOrder() {
+   // Obtenha os dados do cliente
+   const inName = document.getElementById('inName').value;
+   const inPhone = document.getElementById('inPhone').value;
+   const inAddress = document.getElementById('inAddress').value;
+
+   // Construção da mensagem do pedido
+   let message = `*Pedido:*\n`;
+   order.forEach(item => {
+      const itemName = item.nome;
+      // PEGA SOMENTE UM ITEM QUANTO FOR MAIOR QUE 1 A QUANTIDADE 
+      const itemsWithSameName = order.filter(i => i.nome === itemName);
+      const quantity = itemsWithSameName.length;
+      const observations = itemsWithSameName[0].observacoes || "Sem observações";
+
+      message += `${quantity}x ${itemName}\n`;
+      // POSSO ADICIONAR UM CONDIÇÃO PARA EXIBIR OBS SOMENTE SE TIVER CONTEUDO
+      message += `Observações: ${observations}\n\n`;
+   });
+
+   // Adiciona os detalhes do cliente à mensagem
+   message += `Dados do Cliente:\n*Nome:* ${inName}\n*Telefone:* ${inPhone}\n*Endereço:* ${inAddress}`;
+
+   // Substitua a palavra telefone abaixo pelo número do seu contato no WhatsApp
+   const phoneNumber = 'seu número com 55 no início';
+   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+
+   // Abre uma nova guia ou janela com o link do WhatsApp
+   window.open(whatsappUrl, '_blank');
+}
 
 window.onload = createMenu;
