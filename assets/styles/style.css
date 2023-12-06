@@ -299,7 +299,7 @@ header div {
 }
 
 #viewOrder .viewOrderContainer {
-   background: var(--color-orange) url(assets/images/background.png);
+   background: var(--color-orange) url(../images/background.png);
    background-size: contain;
    background-position: top;
    position: fixed;
